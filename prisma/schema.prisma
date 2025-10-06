@@ -1,0 +1,71 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_URL")
+}
+
+// Might Change
+model CalendarEvent {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  startDate   DateTime @default(now())
+  endDate     DateTime @default(now())
+  color       String
+  allDay      Boolean
+}
+
+model Emails {
+  id          Int      @id @default(autoincrement())
+  sender      String
+  senderEmail String
+  recipient   String
+  subject     String
+  content     String
+  timestamp   DateTime @default(now())
+  isRead      Boolean
+  isStarred   Boolean
+  folder      String
+  attachments String[]
+}
+
+model KanbanTask {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  priority    String
+  createdAt   DateTime @default(now())
+}
+
+model Notes {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  category  String
+  tags      String[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  isPinned  Boolean
+}
+
+model Todo {
+  id        Int      @id @default(autoincrement())
+  text      String
+  completed Boolean
+  createdAt DateTime @default(now())
+}
+
+model FileFolders {
+  id        Int      @id @default(autoincrement())
+  name      String
+  type      String
+  size      Int
+  modified  DateTime @default(now())
+  parentId  Int
+  path      String
+  extension String
+}
