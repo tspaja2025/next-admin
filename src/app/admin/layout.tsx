@@ -1,5 +1,6 @@
 import { AppSidebar } from "@/components/admin/AppSidebar";
 import { DarkModeToggle } from "@/components/DarkModeToggle";
+import { SocialAuthProvider } from "@/components/social/SocialAuthProvider";
 import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,
@@ -25,7 +26,9 @@ export default function RootLayout({
           <div className="flex-1"></div>
           <DarkModeToggle />
         </header>
-        <main className="p-4">{children}</main>
+        <main className="p-4">
+          <SocialAuthProvider>{children}</SocialAuthProvider>
+        </main>
       </SidebarInset>
     </SidebarProvider>
   );

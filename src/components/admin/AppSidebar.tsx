@@ -50,11 +50,6 @@ const data = {
           isActive: false,
         },
         {
-          title: "Tasks",
-          url: "/admin/tasks",
-          isActive: false,
-        },
-        {
           title: "File Manager",
           url: "/admin/file-manager",
           isActive: false,
@@ -67,11 +62,6 @@ const data = {
         {
           title: "API Keys",
           url: "/admin/api-keys",
-          isActive: false,
-        },
-        {
-          title: "Courses",
-          url: "/admin/courses",
           isActive: false,
         },
       ],
