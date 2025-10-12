@@ -15,13 +15,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import type { FormItem, InvoiceFormProps, InvoiceStatus } from "@/lib/types";
 import {
   calculateInvoiceTotals,
   createInvoice,
   generateInvoiceNumber,
   updateInvoice,
 } from "@/lib/invoice-utils";
+import type { FormItem, InvoiceFormProps, InvoiceStatus } from "@/lib/types";
 
 export function InvoiceForm({ invoice, onSave, onCancel }: InvoiceFormProps) {
   const [loading, setLoading] = useState(false);

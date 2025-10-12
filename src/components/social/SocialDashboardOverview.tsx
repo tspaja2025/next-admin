@@ -1,18 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import {
-  TrendingUpIcon,
-  CalendarIcon,
-  UsersIcon,
-  FileTextIcon,
-} from "lucide-react";
 import { format } from "date-fns";
+import {
+  CalendarIcon,
+  FileTextIcon,
+  TrendingUpIcon,
+  UsersIcon,
+} from "lucide-react";
+import { useEffect, useState } from "react";
 import { useAuth } from "@/components/social/SocialAuthProvider";
-import type { Post, SocialAccount } from "@/lib/types";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getStatusColor } from "@/lib/social-utils";
+import type { Post, SocialAccount } from "@/lib/types";
 
 export function SocialDashboardOverview() {
   const { user } = useAuth();

@@ -1,14 +1,14 @@
 "use client";
 
 import { ArrowLeftIcon, DownloadIcon, PencilIcon } from "lucide-react";
+import { InvoiceClientInfo } from "@/components/invoice/InvoiceClientInfo";
+import { InvoiceHeader } from "@/components/invoice/InvoiceHeader";
+import { InvoiceNotes } from "@/components/invoice/InvoiceNotes";
+import { InvoiceTable } from "@/components/invoice/InvoiceTable";
+import { InvoiceTotals } from "@/components/invoice/InvoiceTotals";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import type { InvoiceViewProps } from "@/lib/types";
-import { InvoiceHeader } from "@/components/invoice/InvoiceHeader";
-import { InvoiceClientInfo } from "@/components/invoice/InvoiceClientInfo";
-import { InvoiceTable } from "@/components/invoice/InvoiceTable";
-import { InvoiceTotals } from "@/components/invoice/InvoiceTotals";
-import { InvoiceNotes } from "@/components/invoice/InvoiceNotes";
 
 export function InvoiceView({ invoice, onEdit, onBack }: InvoiceViewProps) {
   const handlePrint = () => window.print();

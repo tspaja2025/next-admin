@@ -1,16 +1,16 @@
 "use client";
 
+import {
+  BarChart3Icon,
+  CalendarIcon,
+  LayoutDashboardIcon,
+  PenSquareIcon,
+  SettingsIcon,
+  UsersIcon,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { DashboardSidebarProps } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import {
-  LayoutDashboardIcon,
-  PenSquareIcon,
-  CalendarIcon,
-  BarChart3Icon,
-  UsersIcon,
-  SettingsIcon,
-} from "lucide-react";
 
 type NavItem = {
   label: string;

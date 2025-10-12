@@ -23,8 +23,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import type { InvoiceListProps, InvoiceWithItems } from "@/lib/types";
 import { deleteInvoice, getInvoices, statusColors } from "@/lib/invoice-utils";
+import type { InvoiceListProps, InvoiceWithItems } from "@/lib/types";
 
 export function InvoiceList({ onCreateNew, onEdit, onView }: InvoiceListProps) {
   const [invoices, setInvoices] = useState<InvoiceWithItems[]>([]);

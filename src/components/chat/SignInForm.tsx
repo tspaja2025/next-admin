@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { useAuth } from "@/components/chat/AuthProvider";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { useAuth } from "@/components/chat/AuthProvider";
 
 export function SignInForm() {
   const { signIn } = useAuth();

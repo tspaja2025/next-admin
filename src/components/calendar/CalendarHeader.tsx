@@ -1,18 +1,18 @@
 "use client";
 
+import { format, startOfToday, subMonths } from "date-fns";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { useCalendar } from "@/components/calendar/CalendarProvider";
+import { DarkModeToggle } from "@/components/DarkModeToggle";
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbList,
   BreadcrumbPage,
 } from "@/components/ui/breadcrumb";
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { DarkModeToggle } from "@/components/DarkModeToggle";
-import { Button } from "@/components/ui/button";
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import { useCalendar } from "@/components/calendar/CalendarProvider";
-import { format, startOfToday, subMonths } from "date-fns";
 
 export function CalendarHeader() {
   const { currentDate, setCurrentDate, view, setView } = useCalendar();

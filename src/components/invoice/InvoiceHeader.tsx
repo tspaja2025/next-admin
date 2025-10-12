@@ -1,6 +1,6 @@
 import { FileTextIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { CardHeader, CardTitle, CardAction } from "@/components/ui/card";
+import { CardAction, CardHeader, CardTitle } from "@/components/ui/card";
 import { statusColors } from "@/lib/invoice-utils";
 import type { InvoiceHeaderProps } from "@/lib/types";
 

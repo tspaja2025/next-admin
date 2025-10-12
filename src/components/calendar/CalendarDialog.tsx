@@ -1,18 +1,18 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { format } from "date-fns";
+import { SaveIcon, Trash2Icon } from "lucide-react";
+import { useEffect, useState } from "react";
 import { useCalendar } from "@/components/calendar/CalendarProvider";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
 import {
   Select,
   SelectContent,
@@ -20,8 +20,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Trash2Icon, SaveIcon } from "lucide-react";
-import { format } from "date-fns";
+import { Switch } from "@/components/ui/switch";
+import { Textarea } from "@/components/ui/textarea";
 import { eventColors } from "@/lib/event-colors";
 
 export function CalendarDialog() {

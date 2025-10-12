@@ -1,9 +1,20 @@
 "use client";
 
+import {
+  CheckCircle2Icon,
+  FacebookIcon,
+  InstagramIcon,
+  LinkedinIcon,
+  PlusIcon,
+  Trash2Icon,
+  TwitterIcon,
+  YoutubeIcon,
+} from "lucide-react";
 import { useEffect, useState } from "react";
+import { useAuth } from "@/components/social/SocialAuthProvider";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
   Card,
   CardContent,
@@ -11,7 +22,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Alert, AlertDescription } from "@/components/ui/alert";
 import {
   Dialog,
   DialogContent,
@@ -21,7 +31,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -29,17 +40,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  TwitterIcon,
-  FacebookIcon,
-  LinkedinIcon,
-  InstagramIcon,
-  YoutubeIcon,
-  PlusIcon,
-  Trash2Icon,
-  CheckCircle2Icon,
-} from "lucide-react";
-import { useAuth } from "@/components/social/SocialAuthProvider";
 import type { SocialAccount } from "@/lib/types";
 
 const platformIcons: Record<string, React.ReactNode> = {

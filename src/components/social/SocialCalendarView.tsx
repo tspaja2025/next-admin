@@ -1,22 +1,22 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import {
-  format,
-  startOfMonth,
-  endOfMonth,
   eachDayOfInterval,
+  endOfMonth,
+  format,
   isSameDay,
   parseISO,
+  startOfMonth,
 } from "date-fns";
-import { cn } from "@/lib/utils";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { useEffect, useState } from "react";
 import { useAuth } from "@/components/social/SocialAuthProvider";
-import type { Post, SocialAccount } from "@/lib/types";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getStatusColor } from "@/lib/social-utils";
+import type { Post, SocialAccount } from "@/lib/types";
+import { cn } from "@/lib/utils";
 
 export function SocialCalendarView() {
   const { user } = useAuth();

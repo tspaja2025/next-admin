@@ -1,9 +1,12 @@
 "use client";
 
+import { format } from "date-fns";
+import { CalendarIcon, CheckCircle2Icon, Loader2Icon } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useAuth } from "@/components/social/SocialAuthProvider";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Card,
   CardContent,
@@ -11,7 +14,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import {
   Select,
   SelectContent,
@@ -19,18 +28,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Loader2Icon, CheckCircle2Icon, CalendarIcon } from "lucide-react";
-import { format } from "date-fns";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { cn } from "@/lib/utils";
-import { Calendar } from "@/components/ui/calendar";
-import { useAuth } from "@/components/social/SocialAuthProvider";
 import type { Post, SocialAccount } from "@/lib/types";
+import { cn } from "@/lib/utils";
 
 export function SocialCreatePost() {
   const { user } = useAuth();

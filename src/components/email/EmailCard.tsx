@@ -10,6 +10,7 @@ import {
 import React, { useCallback } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,7 +19,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import type { EmailCardProps } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import { Card } from "@/components/ui/card";
 
 function truncateText(text: string, maxLength: number) {
   return text.length > maxLength ? text.slice(0, maxLength) + "…" : text;

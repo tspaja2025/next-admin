@@ -1,8 +1,18 @@
 "use client";
 
+import {
+  createContext,
+  type ReactNode,
+  useContext,
+  useMemo,
+  useState,
+} from "react";
 import { eventColors } from "@/lib/event-colors";
-import { CalendarContextType, CalendarEvent, CalendarView } from "@/lib/types";
-import { createContext, ReactNode, useContext, useState, useMemo } from "react";
+import type {
+  CalendarContextType,
+  CalendarEvent,
+  CalendarView,
+} from "@/lib/types";
 
 const CalendarContext = createContext<CalendarContextType | null>(null);
 

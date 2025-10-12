@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import {
   CalendarIcon,
   Edit3Icon,
@@ -24,7 +25,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { getPriorityColor, getPriorityTextColor } from "@/lib/kanban-utils";
 import type { TaskCardProps } from "@/lib/types";
-import { motion } from "framer-motion";
 
 export default function TaskCard({
   task,

@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { useAuth } from "@/components/social/SocialAuthProvider";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
   Card,
   CardContent,
@@ -11,9 +12,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { useAuth } from "@/components/social/SocialAuthProvider";
 import { Field, FieldGroup, FieldLabel, FieldSet } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
 import { Spinner } from "@/components/ui/spinner";
 
 export function SocialSignUpForm({ onToggle }: { onToggle: () => void }) {

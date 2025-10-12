@@ -1,6 +1,26 @@
 "use client";
 
+import {
+  HeartIcon,
+  MessageCircleIcon,
+  Share2Icon,
+  TrendingDownIcon,
+  TrendingUpIcon,
+} from "lucide-react";
 import { useEffect, useState } from "react";
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Legend,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
+import { useAuth } from "@/components/social/SocialAuthProvider";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Select,
@@ -9,26 +29,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  TrendingUpIcon,
-  HeartIcon,
-  MessageCircleIcon,
-  Share2Icon,
-  TrendingDownIcon,
-} from "lucide-react";
-import {
-  LineChart,
-  Line,
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  Legend,
-} from "recharts";
-import { useAuth } from "@/components/social/SocialAuthProvider";
 import type { AnalyticsRecord, SocialAccount } from "@/lib/types";
 
 export function SocialAnalytics() {

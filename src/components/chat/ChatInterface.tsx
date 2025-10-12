@@ -2,13 +2,13 @@
 
 import { LogOutIcon, SendIcon, UsersIcon } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { useAuth } from "@/components/chat/AuthProvider";
+import { SignInForm } from "@/components/chat/SignInForm";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import type { Message } from "@/lib/types";
-import { SignInForm } from "@/components/chat/SignInForm";
-import { useAuth } from "@/components/chat/AuthProvider";
 
 export function ChatInterface() {
   const [messages, setMessages] = useState<Message[]>([]);

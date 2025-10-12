@@ -1,8 +1,8 @@
 "use client";
 
+import { isSameDay } from "date-fns";
 import React from "react";
 import { useCalendar } from "@/components/calendar/CalendarProvider";
-import { isSameDay } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
 
 export function CalendarMini() {
