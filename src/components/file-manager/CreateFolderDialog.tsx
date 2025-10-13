@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { useFiles } from "@/components/file-manager/FileContext";
+import { useFiles } from "@/components/providers/Provider";
+import type { CreateFolderDialogProps } from "@/components/providers/types";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -13,7 +14,6 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import type { CreateFolderDialogProps } from "@/lib/types";
 
 export function CreateFolderDialog({
   open,

@@ -1,9 +1,11 @@
 "use client";
 
-import { CopyIcon, KeyIcon, PlusIcon } from "lucide-react";
+import { CopyIcon, PlusIcon } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { ApiKeysTable } from "@/components/api/ApiKeysTable";
+import { useApiKeys } from "@/components/providers/hooks";
+import { useAuth } from "@/components/providers/Provider";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -22,13 +24,13 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useApiKeys } from "@/hooks/use-api-keys";
 
 export default function ApiKeysPage() {
-  const { apiKeys, loading, createKey, deleteKey } = useApiKeys();
+  const { apiKeys, createKey, deleteKey } = useApiKeys();
   const [dialogOpen, setDialogOpen] = useState(false);
   const [newKeyName, setNewKeyName] = useState("");
   const [generatedKey, setGeneratedKey] = useState<string | null>(null);
+  const { loading } = useAuth();
 
   function handleCreate() {
     const key = createKey(newKeyName);
@@ -44,22 +46,21 @@ export default function ApiKeysPage() {
     toast.success("Copied to clipboard");
   }
 
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto"></div>
+          <p className="mt-4">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="font-sans min-h-screen">
-      <div className="container mx-auto py-8 px-4 max-w-6xl">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <div className="flex items-center gap-3 mb-2">
-              <div className="bg-slate-900 rounded-lg p-2">
-                <KeyIcon className="h-6 w-6 text-white" />
-              </div>
-              <h1 className="text-3xl font-bold text-slate-900">API Keys</h1>
-            </div>
-            <p className="text-slate-600">
-              Manage your application API keys securely
-            </p>
-          </div>
-
+      <div className="container mx-auto max-w-6xl">
+        <div className="flex items-center justify-between mb-2">
           <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
             <DialogTrigger asChild>
               <Button size="lg" className="gap-2">
@@ -141,11 +142,7 @@ export default function ApiKeysPage() {
             <CardDescription>Manage and monitor your API keys.</CardDescription>
           </CardHeader>
           <CardContent>
-            {loading ? (
-              <div className="text-center py-12 text-slate-500">Loading...</div>
-            ) : (
-              <ApiKeysTable apiKeys={apiKeys} onDelete={deleteKey} />
-            )}
+            <ApiKeysTable apiKeys={apiKeys} onDelete={deleteKey} />
           </CardContent>
         </Card>
       </div>

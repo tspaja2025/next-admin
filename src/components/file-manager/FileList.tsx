@@ -1,7 +1,7 @@
 "use client";
 
-import { useFiles } from "@/components/file-manager/FileContext";
 import { FileRow } from "@/components/file-manager/FileRow";
+import { useFiles } from "@/components/providers/Provider";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
   Table,

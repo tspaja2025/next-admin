@@ -1,8 +1,8 @@
 "use client";
 
+import type { TitleInputProps } from "@/components/providers/types";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import type { TitleInputProps } from "@/lib/types";
 
 export function NoteTitleInput({ value, onChange }: TitleInputProps) {
   return (

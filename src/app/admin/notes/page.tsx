@@ -6,15 +6,16 @@ import { NoteCard } from "@/components/notes/NoteCard";
 import { NoteCategoryManager } from "@/components/notes/NoteCategoryManager";
 import { NoteEditor } from "@/components/notes/NoteEditor";
 import { NoteSearchAndFilters } from "@/components/notes/NoteSearchAndFilter";
+import {
+  useDebounce,
+  useFilteredNotes,
+  useKeyboardShortcuts,
+  useNotes,
+} from "@/components/providers/hooks";
+import type { Note, SortOption, ViewMode } from "@/components/providers/types";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
-import { useDebounce } from "@/hooks/use-debounce";
-import { useFilteredNotes } from "@/hooks/use-filtered-notes";
-import { useKeyboardShortcuts } from "@/hooks/use-keyboard-shortcuts";
-import { useNotes } from "@/hooks/use-notes";
 import { storage } from "@/lib/note-store";
-import type { Note, SortOption, ViewMode } from "@/lib/types";
 
 export default function NotesPage() {
   const {
@@ -101,17 +102,10 @@ export default function NotesPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50/50 to-purple-50/50 p-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-8">
-            <Skeleton className="h-10 w-64 mb-4" />
-            <Skeleton className="h-4 w-96" />
-          </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {[...Array(6)].map((_, i) => (
-              <Skeleton key={i} className="h-48" />
-            ))}
-          </div>
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto"></div>
+          <p className="mt-4">Loading...</p>
         </div>
       </div>
     );
@@ -119,9 +113,9 @@ export default function NotesPage() {
 
   return (
     <div className="min-h-screen">
-      <div className="max-w-7xl mx-auto p-6">
+      <div className="max-w-7xl mx-auto">
         {/* Search and Filters */}
-        <div className="mb-8">
+        <div className="mb-4">
           <NoteSearchAndFilters
             searchTerm={searchTerm}
             onSearchChange={setSearchTerm}
@@ -184,7 +178,7 @@ export default function NotesPage() {
                 : "space-y-4"
             }
           >
-            {filteredAndSortedNotes.map((note) => (
+            {filteredAndSortedNotes.map((note: Note) => (
               <NoteCard
                 key={note.id}
                 note={note}

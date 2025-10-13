@@ -9,10 +9,10 @@ import {
   Trash2Icon,
   XIcon,
 } from "lucide-react";
+import type { TodoItemProps } from "@/components/providers/types";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import type { TodoItemProps } from "@/lib/types";
 
 export function TodoItem({
   todo,

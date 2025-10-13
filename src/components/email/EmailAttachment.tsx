@@ -1,7 +1,7 @@
 "use client";
 
+import type { EmailAttachmentProps } from "@/components/providers/types";
 import { Button } from "@/components/ui/button";
-import type { EmailAttachmentProps } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 export function EmailAttachment({

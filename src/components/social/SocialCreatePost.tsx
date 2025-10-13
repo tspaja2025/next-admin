@@ -3,7 +3,8 @@
 import { format } from "date-fns";
 import { CalendarIcon, CheckCircle2Icon, Loader2Icon } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useAuth } from "@/components/social/SocialAuthProvider";
+import { useAuth } from "@/components/providers/Provider";
+import type { Post, SocialAccount } from "@/components/providers/types";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -29,7 +30,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import type { Post, SocialAccount } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 export function SocialCreatePost() {
@@ -118,13 +118,6 @@ export function SocialCreatePost() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="text-3xl font-bold text-gray-900">Create Post</h2>
-        <p className="text-gray-500 mt-1">
-          Compose and schedule your social media content
-        </p>
-      </div>
-
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">
           <Card>

@@ -11,7 +11,7 @@ import { useRef, useState } from "react";
 import { DarkModeToggle } from "@/components/DarkModeToggle";
 import { Breadcrumbs } from "@/components/file-manager/Breadcrumbs";
 import { CreateFolderDialog } from "@/components/file-manager/CreateFolderDialog";
-import { useFiles } from "@/components/file-manager/FileContext";
+import { useFiles } from "@/components/providers/Provider";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,

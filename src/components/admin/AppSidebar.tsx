@@ -1,7 +1,9 @@
 import { GalleryVerticalEnd } from "lucide-react";
+import { NavUser } from "@/components/admin/NavUser";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarHeader,
   SidebarMenu,
@@ -14,11 +16,21 @@ import {
 } from "@/components/ui/sidebar";
 
 const data = {
+  user: {
+    name: "example",
+    email: "e@example.com",
+    avatar: "",
+  },
   navMain: [
     {
       title: "Apps",
       url: "",
       items: [
+        {
+          title: "Calendar",
+          url: "/admin/calendar",
+          isActive: false,
+        },
         {
           title: "Kanban Board",
           url: "/admin/kanban-board",
@@ -115,6 +127,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <NavUser user={data.user} />
+      </SidebarFooter>
       <SidebarRail />
     </Sidebar>
   );

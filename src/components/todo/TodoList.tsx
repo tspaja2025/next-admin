@@ -7,10 +7,10 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { AnimatePresence } from "framer-motion";
+import type { TodoListProps } from "@/components/providers/types";
 import { TodoItem } from "@/components/todo/TodoItem";
 import { TodoSortable } from "@/components/todo/TodoSortable";
 import { Card, CardContent } from "@/components/ui/card";
-import type { TodoListProps } from "@/lib/types";
 
 export function TodoList({
   todos,

@@ -20,7 +20,11 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { useAuth } from "@/components/social/SocialAuthProvider";
+import { useAuth } from "@/components/providers/Provider";
+import type {
+  AnalyticsRecord,
+  SocialAccount,
+} from "@/components/providers/types";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Select,
@@ -29,7 +33,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import type { AnalyticsRecord, SocialAccount } from "@/lib/types";
 
 export function SocialAnalytics() {
   const { user } = useAuth();
@@ -161,12 +164,6 @@ export function SocialAnalytics() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-3xl font-bold text-gray-900">Analytics</h2>
-          <p className="text-gray-500 mt-1">
-            Track your social media performance
-          </p>
-        </div>
         <Select value={selectedAccount} onValueChange={setSelectedAccount}>
           <SelectTrigger className="w-[250px]">
             <SelectValue placeholder="Select account" />

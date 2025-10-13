@@ -1,7 +1,7 @@
 "use client";
 
 import { LogOutIcon, Share2Icon, UserIcon } from "lucide-react";
-import { useAuth } from "@/components/social/SocialAuthProvider";
+import { useAuth } from "@/components/providers/Provider";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,7 +16,7 @@ import {
 export function SocialDashboardHeader() {
   const { user, signOut } = useAuth();
 
-  const initials = user?.email?.substring(0, 2).toUpperCase() || "U";
+  const initials = user?.type?.substring(0, 2).toUpperCase() || "U";
 
   return (
     <header className="border-b">
@@ -45,7 +45,7 @@ export function SocialDashboardHeader() {
             <DropdownMenuLabel>
               <div className="flex flex-col space-y-1">
                 <p className="text-sm font-medium">My Account</p>
-                <p className="text-xs text-muted-foreground">{user?.email}</p>
+                <p className="text-xs text-muted-foreground">{user?.type}</p>
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />

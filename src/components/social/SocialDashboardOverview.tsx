@@ -8,11 +8,11 @@ import {
   UsersIcon,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useAuth } from "@/components/social/SocialAuthProvider";
+import { useAuth } from "@/components/providers/Provider";
+import type { Post, SocialAccount } from "@/components/providers/types";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getStatusColor } from "@/lib/social-utils";
-import type { Post, SocialAccount } from "@/lib/types";
 
 export function SocialDashboardOverview() {
   const { user } = useAuth();
@@ -74,58 +74,52 @@ export function SocialDashboardOverview() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-gray-600">
+            <CardTitle className="text-sm font-medium">
               Connected Accounts
             </CardTitle>
-            <UsersIcon className="h-4 w-4 text-gray-400" />
+            <UsersIcon className="h-4 w-4" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-gray-900">
-              {accounts.length}
-            </div>
+            <div className="text-3xl font-bold">{accounts.length}</div>
             <p className="text-xs text-gray-500 mt-1">Active social accounts</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-gray-600">
+            <CardTitle className="text-sm font-medium">
               Scheduled Posts
             </CardTitle>
-            <CalendarIcon className="h-4 w-4 text-gray-400" />
+            <CalendarIcon className="h-4 w-4" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-gray-900">
-              {scheduledCount}
-            </div>
+            <div className="text-3xl font-bold">{scheduledCount}</div>
             <p className="text-xs text-gray-500 mt-1">Ready to publish</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-gray-600">
+            <CardTitle className="text-sm font-medium">
               Published Posts
             </CardTitle>
-            <FileTextIcon className="h-4 w-4 text-gray-400" />
+            <FileTextIcon className="h-4 w-4" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-gray-900">
-              {publishedCount}
-            </div>
+            <div className="text-3xl font-bold">{publishedCount}</div>
             <p className="text-xs text-gray-500 mt-1">Total published</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-gray-600">
+            <CardTitle className="text-sm font-medium">
               Total Engagement
             </CardTitle>
-            <TrendingUpIcon className="h-4 w-4 text-gray-400" />
+            <TrendingUpIcon className="h-4 w-4" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-gray-900">
+            <div className="text-3xl font-bold">
               {totalEngagement.toLocaleString()}
             </div>
             <p className="text-xs text-gray-500 mt-1">
@@ -157,7 +151,7 @@ export function SocialDashboardOverview() {
                   className="flex items-start justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors"
                 >
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-gray-900 truncate">
+                    <p className="text-sm font-medium truncate">
                       {post.content}
                     </p>
                     <div className="flex items-center gap-2 mt-2">
@@ -176,19 +170,17 @@ export function SocialDashboardOverview() {
                   </div>
                   <div className="flex items-center gap-4 text-sm text-gray-500 ml-4">
                     <div className="text-center">
-                      <div className="font-medium text-gray-900">
-                        {post.engagement_likes}
-                      </div>
+                      <div className="font-medium">{post.engagement_likes}</div>
                       <div className="text-xs">Likes</div>
                     </div>
                     <div className="text-center">
-                      <div className="font-medium text-gray-900">
+                      <div className="font-medium">
                         {post.engagement_comments}
                       </div>
                       <div className="text-xs">Comments</div>
                     </div>
                     <div className="text-center">
-                      <div className="font-medium text-gray-900">
+                      <div className="font-medium">
                         {post.engagement_shares}
                       </div>
                       <div className="text-xs">Shares</div>

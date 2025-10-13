@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useCalendar } from "@/components/calendar/CalendarProvider";
+import { useCalendar } from "@/components/providers/Provider";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { eventColors } from "@/lib/event-colors";

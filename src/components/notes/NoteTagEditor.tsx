@@ -2,11 +2,11 @@
 
 import { XIcon } from "lucide-react";
 import { useState } from "react";
+import type { TagEditorProps } from "@/components/providers/types";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import type { TagEditorProps } from "@/lib/types";
 
 export function NoteTagEditor({ tags, onAdd, onRemove }: TagEditorProps) {
   const [tagInput, setTagInput] = useState("");

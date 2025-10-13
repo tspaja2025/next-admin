@@ -1,4 +1,4 @@
-import type { InvoiceNotesProps } from "@/lib/types";
+import type { InvoiceNotesProps } from "@/components/providers/types";
 
 export function InvoiceNotes({ notes }: InvoiceNotesProps) {
   return (

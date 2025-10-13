@@ -3,8 +3,8 @@
 import { useCallback, useReducer, useState } from "react";
 import AddTaskDialog from "@/components/kanban/KanbanAddTaskDialog";
 import KanbanColumn from "@/components/kanban/KanbanColumn";
+import type { KanbanData, Task } from "@/components/providers/types";
 import { initialKanbanData } from "@/lib/kanban-utils";
-import type { KanbanData, Task } from "@/lib/types";
 
 type KanbanAction =
   | { type: "ADD_TASK"; columnId: string; task: Task }

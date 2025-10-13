@@ -1,8 +1,11 @@
 "use client";
 
 import { Trash2Icon } from "lucide-react";
+import type {
+  FilterType,
+  TodoFiltersProps,
+} from "@/components/providers/types";
 import { Button } from "@/components/ui/button";
-import type { FilterType, TodoFiltersProps } from "@/lib/types";
 
 export function TodoFilters({
   filter,

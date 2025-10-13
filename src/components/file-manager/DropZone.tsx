@@ -3,7 +3,7 @@
 import { FolderPlusIcon, UploadIcon } from "lucide-react";
 import { useCallback, useState } from "react";
 import { CreateFolderDialog } from "@/components/file-manager/CreateFolderDialog";
-import { useFiles } from "@/components/file-manager/FileContext";
+import { useFiles } from "@/components/providers/Provider";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 

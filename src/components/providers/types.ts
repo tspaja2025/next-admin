@@ -12,6 +12,26 @@ import {
   MusicIcon,
 } from "lucide-react";
 
+export type AuthUserType = "local" | "social";
+
+export type BaseUser = {
+  id: string;
+  type: AuthUserType;
+};
+
+export type LocalUser = BaseUser & {
+  type: "local";
+  username: string;
+};
+
+export type SocialUser = BaseUser & {
+  type: "social";
+  email: string;
+  full_name: string;
+};
+
+export type AuthUser = LocalUser | SocialUser | null;
+
 /*
  * API Types
  */

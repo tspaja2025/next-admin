@@ -1,6 +1,10 @@
 import { AppSidebar } from "@/components/admin/AppSidebar";
 import { DarkModeToggle } from "@/components/DarkModeToggle";
-import { SocialAuthProvider } from "@/components/social/SocialAuthProvider";
+import {
+  CalendarProvider,
+  FileProvider,
+  UnifiedAuthProvider,
+} from "@/components/providers/Provider";
 import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,
@@ -27,7 +31,11 @@ export default function RootLayout({
           <DarkModeToggle />
         </header>
         <main className="p-4">
-          <SocialAuthProvider>{children}</SocialAuthProvider>
+          <UnifiedAuthProvider>
+            <CalendarProvider>
+              <FileProvider>{children}</FileProvider>
+            </CalendarProvider>
+          </UnifiedAuthProvider>
         </main>
       </SidebarInset>
     </SidebarProvider>

@@ -1,7 +1,7 @@
 "use client";
 
 import { HomeIcon } from "lucide-react";
-import { useFiles } from "@/components/file-manager/FileContext";
+import { useFiles } from "@/components/providers/Provider";
 import {
   Breadcrumb,
   BreadcrumbItem,

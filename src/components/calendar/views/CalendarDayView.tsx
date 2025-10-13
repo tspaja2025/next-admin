@@ -1,9 +1,9 @@
 "use client";
 
+import { format, getHours, isSameDay, isToday } from "date-fns";
 import React, { useRef } from "react";
-import { format, isSameDay, isToday, getHours } from "date-fns";
-import { useCalendar } from "@/components/calendar/CalendarProvider";
-import type { CalendarEvent } from "@/lib/types";
+import { useCalendar } from "@/components/providers/Provider";
+import type { CalendarEvent } from "@/components/providers/types";
 
 export function CalendarDayView() {
   const { currentDate, visibleEvents, openEventDialog } = useCalendar();

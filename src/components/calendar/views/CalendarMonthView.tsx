@@ -11,8 +11,8 @@ import {
   startOfMonth,
   startOfWeek,
 } from "date-fns";
-import { useCalendar } from "@/components/calendar/CalendarProvider";
-import type { CalendarEvent } from "@/lib/types";
+import { useCalendar } from "@/components/providers/Provider";
+import type { CalendarEvent } from "@/components/providers/types";
 
 export function CalendarMonthView() {
   const { currentDate, visibleEvents, openEventDialog } = useCalendar();

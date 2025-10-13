@@ -9,9 +9,12 @@ import {
   StarIcon,
   Trash2Icon,
 } from "lucide-react";
+import type {
+  EmailSidebarProps,
+  FolderInfo,
+} from "@/components/providers/types";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import type { EmailSidebarProps, FolderInfo } from "@/lib/types";
 
 const folders: FolderInfo[] = [
   { id: "inbox", name: "Inbox", icon: InboxIcon, count: 5 },
@@ -30,12 +33,8 @@ export function EmailSidebar({
   const sidebarContent = (
     <div className="flex flex-col h-full">
       {/* Header */}
-      <div className="p-4 border-b border-gray-200">
-        <Button
-          onClick={onComposeClick}
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-200"
-          size="lg"
-        >
+      <div className="p-4 border-b ">
+        <Button onClick={onComposeClick} className="w-full">
           <Edit3Icon />
           Compose
         </Button>
@@ -74,9 +73,5 @@ export function EmailSidebar({
     </div>
   );
 
-  return (
-    <div className="hidden md:flex w-64 border-r border-gray-200">
-      {sidebarContent}
-    </div>
-  );
+  return <div className="hidden md:flex w-64 border-r">{sidebarContent}</div>;
 }

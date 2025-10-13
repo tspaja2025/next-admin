@@ -1,9 +1,9 @@
 "use client";
 
-import { useCalendar } from "@/components/calendar/CalendarProvider";
 import { CalendarDayView } from "@/components/calendar/views/CalendarDayView";
 import { CalendarMonthView } from "@/components/calendar/views/CalendarMonthView";
 import { CalendarWeekView } from "@/components/calendar/views/CalendarWeekView";
+import { useCalendar } from "@/components/providers/Provider";
 
 export function CalendarGrid() {
   const { view } = useCalendar();

@@ -6,8 +6,9 @@ import { EmailList } from "@/components/email/EmailList";
 import { EmailSearchBar } from "@/components/email/EmailSearchBar";
 import { EmailSidebar } from "@/components/email/EmailSidebar";
 import { EmailView } from "@/components/email/EmailView";
-import { useEmails } from "@/hooks/use-emails";
-import type { EmailFilter } from "@/lib/types";
+import { useEmails } from "@/components/providers/hooks";
+import { useAuth } from "@/components/providers/Provider";
+import type { EmailFilter } from "@/components/providers/types";
 
 export default function MailPage() {
   const [filter, setFilter] = useState<EmailFilter>("all");
@@ -24,6 +25,18 @@ export default function MailPage() {
     handleEmailAction,
     handleSendEmail,
   } = useEmails();
+  const { loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto"></div>
+          <p className="mt-4">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex h-screen">
@@ -42,7 +55,7 @@ export default function MailPage() {
         />
 
         <div className="flex-1 flex overflow-hidden">
-          <div className="w-96 border-r border-gray-200 flex flex-col">
+          <div className="w-96 border-r flex flex-col">
             <EmailList
               emails={filteredEmails}
               selectedEmail={selectedEmail}

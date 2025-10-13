@@ -8,6 +8,7 @@ import {
   Trash2Icon,
 } from "lucide-react";
 import React, { useCallback } from "react";
+import type { EmailCardProps } from "@/components/providers/types";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -17,7 +18,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import type { EmailCardProps } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 function truncateText(text: string, maxLength: number) {

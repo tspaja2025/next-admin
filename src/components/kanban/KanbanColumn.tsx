@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { PlusIcon } from "lucide-react";
 import { useState } from "react";
 import KanbanTaskCard from "@/components/kanban/KanbanTaskCard";
+import type { KanbanColumnProps } from "@/components/providers/types";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -12,7 +13,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import type { KanbanColumnProps } from "@/lib/types";
 
 export default function KanbanColumn({
   column,

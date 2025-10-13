@@ -1,7 +1,7 @@
 "use client";
 
+import type { ContentInputProps } from "@/components/providers/types";
 import { Label } from "@/components/ui/label";
-import type { ContentInputProps } from "@/lib/types";
 
 export function NoteContentInput({ value, onChange }: ContentInputProps) {
   return (

@@ -2,6 +2,10 @@
 
 import { PaperclipIcon, Send, X } from "lucide-react";
 import { useRef, useState } from "react";
+import type {
+  Attachment,
+  EmailComposeProps,
+} from "@/components/providers/types";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -12,7 +16,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import type { Attachment, EmailComposeProps } from "@/lib/types";
 
 export function EmailCompose({ isOpen, onClose, onSend }: EmailComposeProps) {
   const [to, setTo] = useState("");

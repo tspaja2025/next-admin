@@ -1,8 +1,8 @@
 import { FileTextIcon } from "lucide-react";
+import type { InvoiceHeaderProps } from "@/components/providers/types";
 import { Badge } from "@/components/ui/badge";
 import { CardAction, CardHeader, CardTitle } from "@/components/ui/card";
 import { statusColors } from "@/lib/invoice-utils";
-import type { InvoiceHeaderProps } from "@/lib/types";
 
 export function InvoiceHeader({ invoice }: InvoiceHeaderProps) {
   return (

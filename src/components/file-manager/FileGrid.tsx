@@ -1,8 +1,8 @@
 "use client";
 
 import { DropZone } from "@/components/file-manager/DropZone";
-import { useFiles } from "@/components/file-manager/FileContext";
 import { FileRow } from "@/components/file-manager/FileRow";
+import { useFiles } from "@/components/providers/Provider";
 
 export function FileGrid() {
   const { getCurrentFiles } = useFiles();

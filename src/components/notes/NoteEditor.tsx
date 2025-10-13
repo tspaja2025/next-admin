@@ -5,6 +5,8 @@ import { NoteCategorySelector } from "@/components/notes/NoteCategorySelector";
 import { NoteContentInput } from "@/components/notes/NoteContentInput";
 import { NoteTagEditor } from "@/components/notes/NoteTagEditor";
 import { NoteTitleInput } from "@/components/notes/NoteTitleInput";
+import { useKeyboardShortcuts } from "@/components/providers/hooks";
+import type { Note, NoteEditorProps } from "@/components/providers/types";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -14,9 +16,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { useKeyboardShortcuts } from "@/hooks/use-keyboard-shortcuts";
 import { initNoteState, noteEditorReducer } from "@/lib/note-reducer";
-import type { Note, NoteEditorProps } from "@/lib/types";
 
 export function NoteEditor({
   note,

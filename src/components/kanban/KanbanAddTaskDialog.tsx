@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { AddTaskDialogProps, Task } from "@/components/providers/types";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -20,7 +21,6 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { generateId } from "@/lib/kanban-utils";
-import type { AddTaskDialogProps, Task } from "@/lib/types";
 
 export default function KanbanAddTaskDialog({
   isOpen,

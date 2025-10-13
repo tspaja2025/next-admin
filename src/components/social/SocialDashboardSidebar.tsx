@@ -8,9 +8,8 @@ import {
   SettingsIcon,
   UsersIcon,
 } from "lucide-react";
+import type { DashboardSidebarProps } from "@/components/providers/types";
 import { Button } from "@/components/ui/button";
-import type { DashboardSidebarProps } from "@/lib/types";
-import { cn } from "@/lib/utils";
 
 type NavItem = {
   label: string;
@@ -56,7 +55,7 @@ export function SocialDashboardSidebar({
   onViewChange,
 }: DashboardSidebarProps) {
   return (
-    <aside className="w-64 border-r  min-h-[calc(100vh-73px)]">
+    <aside className="w-64 border-r  min-h-[calc(100vh-96px)]">
       <nav className="p-4 space-y-1">
         {navItems.map((item) => (
           <Button

@@ -2,13 +2,13 @@
 
 import { LogOutIcon, SendIcon, UsersIcon } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { useAuth } from "@/components/chat/AuthProvider";
 import { SignInForm } from "@/components/chat/SignInForm";
+import { useAuth } from "@/components/providers/Provider";
+import type { Message } from "@/components/providers/types";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import type { Message } from "@/lib/types";
 
 export function ChatInterface() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -58,7 +58,7 @@ export function ChatInterface() {
     const message: Message = {
       id: crypto.randomUUID(),
       user_id: user.id,
-      username: user.username,
+      username: user.type,
       content: newMessage.trim(),
       created_at: new Date().toISOString(),
     };

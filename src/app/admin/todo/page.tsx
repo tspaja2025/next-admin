@@ -1,12 +1,13 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import { useTodos } from "@/hooks/use-todos";
-import { TodoInput } from "@/components/todo/TodoInput";
-import { TodoStats } from "@/components/todo/TodoStats";
+import { useTodos } from "@/components/providers/hooks";
+import { useAuth } from "@/components/providers/Provider";
+import type { FilterType } from "@/components/providers/types";
 import { TodoFilters } from "@/components/todo/TodoFilters";
+import { TodoInput } from "@/components/todo/TodoInput";
 import { TodoList } from "@/components/todo/TodoList";
-import type { FilterType } from "@/lib/types";
+import { TodoStats } from "@/components/todo/TodoStats";
 
 export default function TodoPage() {
   const { todos, setTodos, addTodo, deleteTodo, toggleTodo, clearCompleted } =
@@ -16,6 +17,7 @@ export default function TodoPage() {
   const [filter, setFilter] = useState<FilterType>("all");
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editValue, setEditValue] = useState("");
+  const { loading } = useAuth();
 
   const startEditing = useCallback((id: string, text: string) => {
     setEditingId(id);
@@ -53,6 +55,17 @@ export default function TodoPage() {
       ),
     [todos],
   );
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto"></div>
+          <p className="mt-4">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="font-sans min-h-screen w-full">

@@ -2,6 +2,7 @@
 
 import { PlusIcon, Trash2Icon } from "lucide-react";
 import { useState } from "react";
+import type { CategoryManagerProps } from "@/components/providers/types";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -11,7 +12,6 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import type { CategoryManagerProps } from "@/lib/types";
 
 const PRESET_COLORS = [
   "#3B82F6",

@@ -4,10 +4,10 @@ import { PlusIcon } from "lucide-react";
 import type React from "react";
 import { CalendarEventFilters } from "@/components/calendar/CalendarEventFilters";
 import { CalendarMini } from "@/components/calendar/CalendarMini";
-import { useCalendar } from "@/components/calendar/CalendarProvider";
+import { useCalendar } from "@/components/providers/Provider";
 import { Button } from "@/components/ui/button";
 import {
-  Sidebar,
+  type Sidebar,
   SidebarContent,
   SidebarHeader,
 } from "@/components/ui/sidebar";
@@ -25,7 +25,7 @@ export function CalendarSidebar({
   };
 
   return (
-    <Sidebar {...props}>
+    <div>
       <SidebarHeader className="h-16 justify-center border-b">
         {/* Create button */}
         <Button onClick={handleCreateEvent}>
@@ -38,6 +38,6 @@ export function CalendarSidebar({
         {/* Event Filters */}
         <CalendarEventFilters />
       </SidebarContent>
-    </Sidebar>
+    </div>
   );
 }

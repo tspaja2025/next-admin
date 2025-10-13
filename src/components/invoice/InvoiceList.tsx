@@ -4,12 +4,15 @@ import { format } from "date-fns";
 import {
   EyeIcon,
   FileTextIcon,
-  Loader2Icon,
   PencilIcon,
   PlusIcon,
   Trash2Icon,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import type {
+  InvoiceListProps,
+  InvoiceWithItems,
+} from "@/components/providers/types";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -24,7 +27,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { deleteInvoice, getInvoices, statusColors } from "@/lib/invoice-utils";
-import type { InvoiceListProps, InvoiceWithItems } from "@/lib/types";
 
 export function InvoiceList({ onCreateNew, onEdit, onView }: InvoiceListProps) {
   const [invoices, setInvoices] = useState<InvoiceWithItems[]>([]);
@@ -59,8 +61,11 @@ export function InvoiceList({ onCreateNew, onEdit, onView }: InvoiceListProps) {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-12">
-        <Loader2Icon className="h-8 w-8 animate-spin " />
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto"></div>
+          <p className="mt-4">Loading...</p>
+        </div>
       </div>
     );
   }

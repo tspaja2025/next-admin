@@ -10,12 +10,12 @@ import {
 } from "date-fns";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useAuth } from "@/components/social/SocialAuthProvider";
+import { useAuth } from "@/components/providers/Provider";
+import type { Post, SocialAccount } from "@/components/providers/types";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getStatusColor } from "@/lib/social-utils";
-import type { Post, SocialAccount } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 export function SocialCalendarView() {
@@ -83,13 +83,7 @@ export function SocialCalendarView() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-3xl font-bold text-gray-900">Content Calendar</h2>
-          <p className="text-gray-500 mt-1">
-            View and manage your scheduled posts
-          </p>
-        </div>
+      <div className="flex items-center justify-center">
         <div className="flex items-center space-x-2">
           <Button variant="outline" size="icon" onClick={previousMonth}>
             <ChevronLeftIcon className="h-4 w-4" />
@@ -109,7 +103,7 @@ export function SocialCalendarView() {
             {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
               <div
                 key={day}
-                className="text-center font-semibold text-sm text-gray-600 py-2"
+                className="text-center font-semibold text-sm  py-2"
               >
                 {day}
               </div>
@@ -125,14 +119,14 @@ export function SocialCalendarView() {
                 <div
                   key={day.toString()}
                   className={cn(
-                    "min-h-[120px] border rounded-lg p-2 bg-white",
+                    "min-h-[120px] border rounded-lg p-2 ",
                     isToday && "border-blue-500 border-2",
                   )}
                 >
                   <div
                     className={cn(
                       "text-sm font-medium mb-2",
-                      isToday ? "text-blue-600" : "text-gray-900",
+                      isToday ? "text-blue-600" : "",
                     )}
                   >
                     {format(day, "d")}

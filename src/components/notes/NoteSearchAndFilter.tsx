@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { DarkModeToggle } from "@/components/DarkModeToggle";
+import type { SearchAndFiltersProps } from "@/components/providers/types";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -26,7 +27,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import type { SearchAndFiltersProps } from "@/lib/types";
 
 export function NoteSearchAndFilters({
   searchTerm,

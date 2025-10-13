@@ -1,4 +1,4 @@
-import type { ApiKey } from "@/lib/types";
+import type { ApiKey } from "@/components/providers/types";
 
 const STORAGE_KEY = "api_keys";
 

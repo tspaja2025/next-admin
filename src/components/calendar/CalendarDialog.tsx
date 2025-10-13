@@ -3,7 +3,7 @@
 import { format } from "date-fns";
 import { SaveIcon, Trash2Icon } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useCalendar } from "@/components/calendar/CalendarProvider";
+import { useCalendar } from "@/components/providers/Provider";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,

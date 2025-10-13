@@ -1,16 +1,16 @@
 "use client";
 
-import React, { useRef } from "react";
 import {
-  startOfWeek,
   addDays,
   format,
+  getHours,
   isSameDay,
   isToday,
-  getHours,
+  startOfWeek,
 } from "date-fns";
-import { useCalendar } from "@/components/calendar/CalendarProvider";
-import type { CalendarEvent } from "@/lib/types";
+import React, { useRef } from "react";
+import { useCalendar } from "@/components/providers/Provider";
+import type { CalendarEvent } from "@/components/providers/types";
 
 export function CalendarWeekView() {
   const { currentDate, visibleEvents, openEventDialog } = useCalendar();

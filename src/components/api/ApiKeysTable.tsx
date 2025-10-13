@@ -2,6 +2,7 @@
 
 import { format } from "date-fns";
 import { Trash2Icon } from "lucide-react";
+import type { ApiKeysTableProps } from "@/components/providers/types";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,7 +14,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { maskApiKey } from "@/lib/api-keys";
-import type { ApiKeysTableProps } from "@/lib/types";
 
 export function ApiKeysTable({ apiKeys, onDelete }: ApiKeysTableProps) {
   if (apiKeys.length === 0) {
