@@ -1,13 +1,13 @@
 "use client";
 
 import { HomeIcon } from "lucide-react";
-import { useFiles } from "@/components/providers/Provider";
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
 } from "@/components/ui/breadcrumb";
+import { useFiles } from "@/providers/FileProvider";
 
 export function Breadcrumbs() {
   const { getPathSegments, setCurrentPath } = useFiles();

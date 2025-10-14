@@ -4,13 +4,13 @@ import { PlusIcon } from "lucide-react";
 import type React from "react";
 import { CalendarEventFilters } from "@/components/calendar/CalendarEventFilters";
 import { CalendarMini } from "@/components/calendar/CalendarMini";
-import { useCalendar } from "@/components/providers/Provider";
 import { Button } from "@/components/ui/button";
 import {
   type Sidebar,
   SidebarContent,
   SidebarHeader,
 } from "@/components/ui/sidebar";
+import { useCalendar } from "@/providers/CalendarProvider";
 
 export function CalendarSidebar({
   ...props

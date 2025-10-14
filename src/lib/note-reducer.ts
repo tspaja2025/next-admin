@@ -1,8 +1,4 @@
-import type {
-  Action,
-  Note,
-  NoteEditorState,
-} from "@/components/providers/types";
+import type { Action, Note, NoteEditorState } from "@/lib/types";
 
 export function noteEditorReducer(
   state: NoteEditorState,

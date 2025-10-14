@@ -1,16 +1,14 @@
 import { AppSidebar } from "@/components/admin/AppSidebar";
 import { DarkModeToggle } from "@/components/DarkModeToggle";
-import {
-  CalendarProvider,
-  FileProvider,
-  UnifiedAuthProvider,
-} from "@/components/providers/Provider";
 import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { CalendarProvider } from "@/providers/CalendarProvider";
+import { FileProvider } from "@/providers/FileProvider";
+import { UnifiedAuthProvider } from "@/providers/UnifiedAuthProvider";
 
 export default function RootLayout({
   children,

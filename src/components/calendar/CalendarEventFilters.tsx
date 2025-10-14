@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
-import { useCalendar } from "@/components/providers/Provider";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { eventColors } from "@/lib/event-colors";
+import { useCalendar } from "@/providers/CalendarProvider";
 
 export function CalendarEventFilters() {
   const { events, hiddenColors, setHiddenColors } = useCalendar();

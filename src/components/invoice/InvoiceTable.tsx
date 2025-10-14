@@ -1,4 +1,3 @@
-import type { InvoiceTableProps } from "@/components/providers/types";
 import {
   Table,
   TableBody,
@@ -7,6 +6,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import type { InvoiceTableProps } from "@/lib/types";
 
 const formatCurrency = (num: number) =>
   new Intl.NumberFormat("en-US", {

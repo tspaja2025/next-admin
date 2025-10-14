@@ -3,7 +3,7 @@
 import { DropZone } from "@/components/file-manager/DropZone";
 import { FileGrid } from "@/components/file-manager/FileGrid";
 import { FileList } from "@/components/file-manager/FileList";
-import { useFiles } from "@/components/providers/Provider";
+import { useFiles } from "@/providers/FileProvider";
 
 export function FileContainer() {
   const { getCurrentFiles, viewMode } = useFiles();

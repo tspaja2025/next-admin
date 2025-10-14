@@ -1,7 +1,7 @@
 "use client";
 
-import type { TodoStatsProps } from "@/components/providers/types";
 import { Badge } from "@/components/ui/badge";
+import type { TodoStatsProps } from "@/lib/types";
 
 export function TodoStats({ active, completed, total }: TodoStatsProps) {
   return (

@@ -2,8 +2,6 @@
 
 import { format, startOfToday, subMonths } from "date-fns";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import { DarkModeToggle } from "@/components/DarkModeToggle";
-import { useCalendar } from "@/components/providers/Provider";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -12,6 +10,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { useCalendar } from "@/providers/CalendarProvider";
 
 export function CalendarHeader() {
   const { currentDate, setCurrentDate, view, setView } = useCalendar();
@@ -110,7 +109,6 @@ export function CalendarHeader() {
           orientation="vertical"
           className="mr-2 data-[orientation=vertical]:h-4"
         />
-        <DarkModeToggle />
       </div>
     </header>
   );

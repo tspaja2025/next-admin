@@ -1,4 +1,4 @@
-import type { Email } from "@/components/providers/types";
+import type { Email } from "@/lib/types";
 
 export const mockEmails: Email[] = [
   {

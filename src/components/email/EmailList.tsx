@@ -1,8 +1,8 @@
 "use client";
 
 import { EmailCard } from "@/components/email/EmailCard";
-import type { EmailListProps } from "@/components/providers/types";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import type { EmailListProps } from "@/lib/types";
 
 export function EmailList({
   emails,

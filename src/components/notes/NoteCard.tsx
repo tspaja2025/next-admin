@@ -3,10 +3,10 @@
 import { format } from "date-fns";
 import { CalendarIcon, EditIcon, PinIcon, Trash2Icon } from "lucide-react";
 import React, { useState } from "react";
-import type { NoteCardProps } from "@/components/providers/types";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import type { NoteCardProps } from "@/lib/types";
 
 export const NoteCard = React.memo(function NoteCard({
   note,

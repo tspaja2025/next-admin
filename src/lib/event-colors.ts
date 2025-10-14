@@ -1,4 +1,4 @@
-import type { EventColors } from "@/components/providers/types";
+import type { EventColors } from "@/lib/types";
 
 export const eventColors: EventColors[] = [
   { name: "Blue", value: "#1a73e8" },

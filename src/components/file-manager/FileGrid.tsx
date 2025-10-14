@@ -2,7 +2,7 @@
 
 import { DropZone } from "@/components/file-manager/DropZone";
 import { FileRow } from "@/components/file-manager/FileRow";
-import { useFiles } from "@/components/providers/Provider";
+import { useFiles } from "@/providers/FileProvider";
 
 export function FileGrid() {
   const { getCurrentFiles } = useFiles();

@@ -11,8 +11,6 @@ import {
   YoutubeIcon,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useAuth } from "@/components/providers/Provider";
-import type { SocialAccount } from "@/components/providers/types";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -41,6 +39,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import type { SocialAccount } from "@/lib/types";
+import { useAuth } from "@/providers/UnifiedAuthProvider";
 
 const platformIcons: Record<string, React.ReactNode> = {
   Twitter: <TwitterIcon className="h-5 w-5" />,

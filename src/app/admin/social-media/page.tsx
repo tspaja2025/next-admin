@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { useAuth } from "@/components/providers/Provider";
 import { SocialAccounts } from "@/components/social/SocialAccounts";
 import { SocialAnalytics } from "@/components/social/SocialAnalytics";
 import { SocialCalendarView } from "@/components/social/SocialCalendarView";
 import { SocialCreatePost } from "@/components/social/SocialCreatePost";
 import { SocialDashboardOverview } from "@/components/social/SocialDashboardOverview";
 import { SocialDashboardSidebar } from "@/components/social/SocialDashboardSidebar";
+import { useAuth } from "@/providers/UnifiedAuthProvider";
 
 export default function SocialMediaPage() {
   const { loading } = useAuth();

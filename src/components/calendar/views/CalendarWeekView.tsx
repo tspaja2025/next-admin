@@ -9,8 +9,8 @@ import {
   startOfWeek,
 } from "date-fns";
 import React, { useRef } from "react";
-import { useCalendar } from "@/components/providers/Provider";
-import type { CalendarEvent } from "@/components/providers/types";
+import type { CalendarEvent } from "@/lib/types";
+import { useCalendar } from "@/providers/CalendarProvider";
 
 export function CalendarWeekView() {
   const { currentDate, visibleEvents, openEventDialog } = useCalendar();

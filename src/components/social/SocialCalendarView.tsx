@@ -10,13 +10,13 @@ import {
 } from "date-fns";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useAuth } from "@/components/providers/Provider";
-import type { Post, SocialAccount } from "@/components/providers/types";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getStatusColor } from "@/lib/social-utils";
+import type { Post, SocialAccount } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/providers/UnifiedAuthProvider";
 
 export function SocialCalendarView() {
   const { user } = useAuth();

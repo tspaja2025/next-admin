@@ -8,11 +8,11 @@ import {
   UsersIcon,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useAuth } from "@/components/providers/Provider";
-import type { Post, SocialAccount } from "@/components/providers/types";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getStatusColor } from "@/lib/social-utils";
+import type { Post, SocialAccount } from "@/lib/types";
+import { useAuth } from "@/providers/UnifiedAuthProvider";
 
 export function SocialDashboardOverview() {
   const { user } = useAuth();

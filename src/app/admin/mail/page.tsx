@@ -6,24 +6,21 @@ import { EmailList } from "@/components/email/EmailList";
 import { EmailSearchBar } from "@/components/email/EmailSearchBar";
 import { EmailSidebar } from "@/components/email/EmailSidebar";
 import { EmailView } from "@/components/email/EmailView";
-import { useEmails } from "@/components/providers/hooks";
-import { useAuth } from "@/components/providers/Provider";
-import type { EmailFilter } from "@/components/providers/types";
+import { useEmails } from "@/hooks/use-emails";
+import type { EmailFilter } from "@/lib/types";
+import { useAuth } from "@/providers/UnifiedAuthProvider";
 
 export default function MailPage() {
   const [filter, setFilter] = useState<EmailFilter>("all");
   const {
-    selectedFolder,
-    setSelectedFolder,
-    selectedEmail,
-    setSelectedEmail,
-    isComposeOpen,
-    setIsComposeOpen,
-    searchQuery,
-    setSearchQuery,
+    state: { selectedFolder, selectedEmail, isComposeOpen, searchQuery },
     filteredEmails,
-    handleEmailAction,
+    setSelectedFolder,
+    setSelectedEmail,
+    setSearchQuery,
+    setIsComposeOpen,
     handleSendEmail,
+    handleEmailAction,
   } = useEmails();
   const { loading } = useAuth();
 

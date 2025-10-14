@@ -4,8 +4,6 @@ import { CopyIcon, PlusIcon } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { ApiKeysTable } from "@/components/api/ApiKeysTable";
-import { useApiKeys } from "@/components/providers/hooks";
-import { useAuth } from "@/components/providers/Provider";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -24,6 +22,8 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useApiKeys } from "@/hooks/use-api-keys";
+import { useAuth } from "@/providers/UnifiedAuthProvider";
 
 export default function ApiKeysPage() {
   const { apiKeys, createKey, deleteKey } = useApiKeys();

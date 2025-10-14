@@ -3,11 +3,6 @@
 import { format } from "date-fns";
 import { ArrowLeftIcon, PlusIcon, SaveIcon, Trash2Icon } from "lucide-react";
 import { useEffect, useState } from "react";
-import type {
-  FormItem,
-  InvoiceFormProps,
-  InvoiceStatus,
-} from "@/components/providers/types";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -26,6 +21,7 @@ import {
   generateInvoiceNumber,
   updateInvoice,
 } from "@/lib/invoice-utils";
+import type { FormItem, InvoiceFormProps, InvoiceStatus } from "@/lib/types";
 
 export function InvoiceForm({ invoice, onSave, onCancel }: InvoiceFormProps) {
   const [loading, setLoading] = useState(false);

@@ -7,10 +7,10 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { AnimatePresence } from "framer-motion";
-import type { TodoListProps } from "@/components/providers/types";
 import { TodoItem } from "@/components/todo/TodoItem";
 import { TodoSortable } from "@/components/todo/TodoSortable";
 import { Card, CardContent } from "@/components/ui/card";
+import type { TodoListProps } from "@/lib/types";
 
 export function TodoList({
   todos,
@@ -23,7 +23,7 @@ export function TodoList({
   onSaveEdit,
   onCancelEdit,
   onEditChange,
-  setTodos,
+  reorderTodos, // Replace setTodos with reorderTodos
 }: TodoListProps) {
   const filteredTodos = todos.filter((todo) => {
     if (filter === "active") return !todo.completed;
@@ -34,11 +34,7 @@ export function TodoList({
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
     if (over && active.id !== over.id) {
-      setTodos((prev) => {
-        const oldIndex = prev.findIndex((t) => t.id === active.id);
-        const newIndex = prev.findIndex((t) => t.id === over.id);
-        return arrayMove(prev, oldIndex, newIndex);
-      });
+      reorderTodos(active.id as string, over.id as string);
     }
   };
 

@@ -6,16 +6,14 @@ import { NoteCard } from "@/components/notes/NoteCard";
 import { NoteCategoryManager } from "@/components/notes/NoteCategoryManager";
 import { NoteEditor } from "@/components/notes/NoteEditor";
 import { NoteSearchAndFilters } from "@/components/notes/NoteSearchAndFilter";
-import {
-  useDebounce,
-  useFilteredNotes,
-  useKeyboardShortcuts,
-  useNotes,
-} from "@/components/providers/hooks";
-import type { Note, SortOption, ViewMode } from "@/components/providers/types";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { useDebounce } from "@/hooks/use-debounce";
+import { useFilteredNotes } from "@/hooks/use-filtered-notes";
+import { useKeyboardShortcuts } from "@/hooks/use-keyboard-shortcuts";
+import { useNotes } from "@/hooks/use-notes";
 import { storage } from "@/lib/note-store";
+import type { Note, SortOption, ViewMode } from "@/lib/types";
 
 export default function NotesPage() {
   const {

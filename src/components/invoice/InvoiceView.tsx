@@ -6,9 +6,9 @@ import { InvoiceHeader } from "@/components/invoice/InvoiceHeader";
 import { InvoiceNotes } from "@/components/invoice/InvoiceNotes";
 import { InvoiceTable } from "@/components/invoice/InvoiceTable";
 import { InvoiceTotals } from "@/components/invoice/InvoiceTotals";
-import type { InvoiceViewProps } from "@/components/providers/types";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import type { InvoiceViewProps } from "@/lib/types";
 
 export function InvoiceView({ invoice, onEdit, onBack }: InvoiceViewProps) {
   const handlePrint = () => window.print();

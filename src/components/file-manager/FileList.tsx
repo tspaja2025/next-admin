@@ -1,7 +1,6 @@
 "use client";
 
 import { FileRow } from "@/components/file-manager/FileRow";
-import { useFiles } from "@/components/providers/Provider";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
   Table,
@@ -10,6 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useFiles } from "@/providers/FileProvider";
 
 export function FileList() {
   const { getCurrentFiles, selectedFiles, setSelectedFiles } = useFiles();

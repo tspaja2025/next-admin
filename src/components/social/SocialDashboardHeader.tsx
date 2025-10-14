@@ -1,7 +1,6 @@
 "use client";
 
 import { LogOutIcon, Share2Icon, UserIcon } from "lucide-react";
-import { useAuth } from "@/components/providers/Provider";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,6 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useAuth } from "@/providers/UnifiedAuthProvider";
 
 export function SocialDashboardHeader() {
   const { user, signOut } = useAuth();

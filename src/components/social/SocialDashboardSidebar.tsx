@@ -8,8 +8,8 @@ import {
   SettingsIcon,
   UsersIcon,
 } from "lucide-react";
-import type { DashboardSidebarProps } from "@/components/providers/types";
 import { Button } from "@/components/ui/button";
+import type { DashboardSidebarProps } from "@/lib/types";
 
 type NavItem = {
   label: string;

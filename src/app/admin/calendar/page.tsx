@@ -4,8 +4,9 @@ import { CalendarDialog } from "@/components/calendar/CalendarDialog";
 import { CalendarGrid } from "@/components/calendar/CalendarGrid";
 import { CalendarHeader } from "@/components/calendar/CalendarHeader";
 import { CalendarSidebar } from "@/components/calendar/CalendarSidebar";
-import { CalendarProvider, useAuth } from "@/components/providers/Provider";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { CalendarProvider } from "@/providers/CalendarProvider";
+import { useAuth } from "@/providers/UnifiedAuthProvider";
 
 export default function CalendarPage() {
   const { loading } = useAuth();

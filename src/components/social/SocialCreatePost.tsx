@@ -3,8 +3,6 @@
 import { format } from "date-fns";
 import { CalendarIcon, CheckCircle2Icon, Loader2Icon } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useAuth } from "@/components/providers/Provider";
-import type { Post, SocialAccount } from "@/components/providers/types";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -30,7 +28,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import type { Post, SocialAccount } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/providers/UnifiedAuthProvider";
 
 export function SocialCreatePost() {
   const { user } = useAuth();

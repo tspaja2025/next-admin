@@ -1,5 +1,5 @@
-import type { InvoiceTotalsProps } from "@/components/providers/types";
 import { Separator } from "@/components/ui/separator";
+import type { InvoiceTotalsProps } from "@/lib/types";
 
 const formatCurrency = (num: number) =>
   new Intl.NumberFormat("en-US", {

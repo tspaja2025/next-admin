@@ -1,6 +1,6 @@
 import { format } from "date-fns";
-import type { Invoice } from "@/components/providers/types";
 import { Separator } from "@/components/ui/separator";
+import type { Invoice } from "@/lib/types";
 
 interface Props {
   invoice: Invoice;

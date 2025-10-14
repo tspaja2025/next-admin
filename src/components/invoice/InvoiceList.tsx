@@ -9,10 +9,6 @@ import {
   Trash2Icon,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import type {
-  InvoiceListProps,
-  InvoiceWithItems,
-} from "@/components/providers/types";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -27,6 +23,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { deleteInvoice, getInvoices, statusColors } from "@/lib/invoice-utils";
+import type { InvoiceListProps, InvoiceWithItems } from "@/lib/types";
 
 export function InvoiceList({ onCreateNew, onEdit, onView }: InvoiceListProps) {
   const [invoices, setInvoices] = useState<InvoiceWithItems[]>([]);

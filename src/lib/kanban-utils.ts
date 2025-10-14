@@ -1,4 +1,4 @@
-import type { KanbanData, Task } from "@/components/providers/types";
+import type { KanbanData, Task } from "@/lib/types";
 
 export const initialKanbanData: KanbanData = {
   columns: [

@@ -1,4 +1,4 @@
-import type { Category, Note } from "@/components/providers/types";
+import type { Category, Note } from "@/lib/types";
 
 const NOTES_KEY = "notes-app-notes";
 const CATEGORIES_KEY = "notes-app-categories";

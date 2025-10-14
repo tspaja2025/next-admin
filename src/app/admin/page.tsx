@@ -1,7 +1,7 @@
 "use client";
 
 import { EmptyPage } from "@/components/admin/EmptyPage";
-import { useAuth } from "@/components/providers/Provider";
+import { useAuth } from "@/providers/UnifiedAuthProvider";
 
 export default function Admin() {
   const { loading } = useAuth();

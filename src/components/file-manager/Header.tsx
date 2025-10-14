@@ -8,10 +8,8 @@ import {
   UploadIcon,
 } from "lucide-react";
 import { useRef, useState } from "react";
-import { DarkModeToggle } from "@/components/DarkModeToggle";
 import { Breadcrumbs } from "@/components/file-manager/Breadcrumbs";
 import { CreateFolderDialog } from "@/components/file-manager/CreateFolderDialog";
-import { useFiles } from "@/components/providers/Provider";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -20,6 +18,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
+import { useFiles } from "@/providers/FileProvider";
 
 export function Header() {
   const {
@@ -102,8 +101,6 @@ export function Header() {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-
-          <DarkModeToggle />
         </div>
 
         <input

@@ -9,12 +9,9 @@ import {
   StarIcon,
   Trash2Icon,
 } from "lucide-react";
-import type {
-  EmailSidebarProps,
-  FolderInfo,
-} from "@/components/providers/types";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import type { EmailSidebarProps, FolderInfo } from "@/lib/types";
 
 const folders: FolderInfo[] = [
   { id: "inbox", name: "Inbox", icon: InboxIcon, count: 5 },

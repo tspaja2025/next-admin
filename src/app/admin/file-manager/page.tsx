@@ -1,7 +1,7 @@
 "use client";
 
 import { FileManager } from "@/components/file-manager/FileManager";
-import { useAuth } from "@/components/providers/Provider";
+import { useAuth } from "@/providers/UnifiedAuthProvider";
 
 export default function FileManagerPage() {
   const { loading } = useAuth();

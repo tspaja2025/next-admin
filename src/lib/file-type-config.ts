@@ -9,10 +9,7 @@ import {
   ImageIcon,
   MusicIcon,
 } from "lucide-react";
-import type {
-  FileCategory,
-  FileTypeConfig,
-} from "@/components/providers/types";
+import type { FileCategory, FileTypeConfig } from "@/lib/types";
 
 export const fileTypeMap: Record<FileCategory, FileTypeConfig> = {
   folder: { icon: FolderIcon, color: "text-blue-500" },

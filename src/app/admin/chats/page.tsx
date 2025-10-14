@@ -1,7 +1,7 @@
 "use client";
 
 import { ChatInterface } from "@/components/chat/ChatInterface";
-import { useAuth } from "@/components/providers/Provider";
+import { useAuth } from "@/providers/UnifiedAuthProvider";
 
 export default function ChatsPage() {
   const { loading } = useAuth();

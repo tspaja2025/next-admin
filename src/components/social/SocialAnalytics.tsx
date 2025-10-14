@@ -20,11 +20,6 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { useAuth } from "@/components/providers/Provider";
-import type {
-  AnalyticsRecord,
-  SocialAccount,
-} from "@/components/providers/types";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Select,
@@ -33,6 +28,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import type { AnalyticsRecord, SocialAccount } from "@/lib/types";
+import { useAuth } from "@/providers/UnifiedAuthProvider";
 
 export function SocialAnalytics() {
   const { user } = useAuth();

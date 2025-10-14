@@ -2,13 +2,13 @@
 
 import { LogOutIcon, SendIcon, UsersIcon } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { SignInForm } from "@/components/chat/SignInForm";
-import { useAuth } from "@/components/providers/Provider";
-import type { Message } from "@/components/providers/types";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import type { Message } from "@/lib/types";
+import { useAuth } from "@/providers/UnifiedAuthProvider";
+import AuthForm from "./AuthForm";
 
 export function ChatInterface() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -98,13 +98,13 @@ export function ChatInterface() {
     signOut();
   };
 
-  if (!user) return <SignInForm />;
+  if (!user) return <AuthForm />;
 
   return (
-    <div className="font-sans h-screen flex flex-col">
-      <header className="bg-white border-b px-6 py-4 flex items-center justify-between shadow-sm">
+    <div className="font-sans h-[calc(100vh-96px)] flex flex-col">
+      <header className="border-b px-6 py-4 flex items-center justify-between shadow-sm">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Chat Room</h1>
+          <h1 className="text-2xl font-bold">Chat Room</h1>
           <div className="flex items-center gap-2 mt-1 text-sm text-slate-600">
             <UsersIcon size={16} />
             <span>{onlineUsers} online</span>
@@ -164,10 +164,7 @@ export function ChatInterface() {
         </div>
       </ScrollArea>
 
-      <form
-        onSubmit={sendMessage}
-        className="bg-white border-t px-6 py-4 shadow-sm"
-      >
+      <form onSubmit={sendMessage} className="border-t px-6 py-4 shadow-sm">
         <div className="flex gap-3">
           <Input
             type="text"

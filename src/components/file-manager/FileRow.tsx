@@ -3,13 +3,13 @@
 import { format, isToday, isYesterday } from "date-fns";
 import { useState } from "react";
 import { FileActionsDropdown } from "@/components/file-manager/FileActionsDropdown";
-import { useFiles } from "@/components/providers/Provider";
-import type { FileRowProps } from "@/components/providers/types";
 import { Card } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { TableCell, TableRow } from "@/components/ui/table";
 import { getFileIcon, getFileTypeColor } from "@/lib/files";
+import type { FileRowProps } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { useFiles } from "@/providers/FileProvider";
 
 function formatFileSize(bytes: number, decimals = 2): string {
   if (bytes === 0) return "0 Bytes";

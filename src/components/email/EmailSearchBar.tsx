@@ -1,8 +1,4 @@
 import { ChevronDownIcon, SearchIcon } from "lucide-react";
-import type {
-  EmailFilter,
-  EmailSearchBarProps,
-} from "@/components/providers/types";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -11,6 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
+import type { EmailFilter, EmailSearchBarProps } from "@/lib/types";
 
 export function EmailSearchBar({
   searchQuery,

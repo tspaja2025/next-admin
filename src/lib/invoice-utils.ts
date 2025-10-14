@@ -1,8 +1,4 @@
-import type {
-  Invoice,
-  InvoiceItem,
-  InvoiceWithItems,
-} from "@/components/providers/types";
+import type { Invoice, InvoiceItem, InvoiceWithItems } from "@/lib/types";
 
 export const statusColors = {
   draft: "bg-slate-100 text-slate-700 hover:bg-slate-100",

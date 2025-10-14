@@ -6,8 +6,6 @@ import {
   MoreHorizontalIcon,
   Trash2Icon,
 } from "lucide-react";
-import { useFiles } from "@/components/providers/Provider";
-import type { FileItem } from "@/components/providers/types";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -15,6 +13,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import type { FileItem } from "@/lib/types";
+import { useFiles } from "@/providers/FileProvider";
 
 export function FileActionsDropdown({ file }: { file: FileItem }) {
   const { deleteFiles, renameFile } = useFiles();

@@ -1,6 +1,5 @@
 "use client";
 
-import type { CategorySelectorProps } from "@/components/providers/types";
 import { Label } from "@/components/ui/label";
 import {
   Select,
@@ -9,6 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import type { CategorySelectorProps } from "@/lib/types";
 
 export function NoteCategorySelector({
   value,

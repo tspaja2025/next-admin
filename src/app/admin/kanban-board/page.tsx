@@ -1,7 +1,7 @@
 "use client";
 
 import KanbanBoard from "@/components/kanban/KanbanBoard";
-import { useAuth } from "@/components/providers/Provider";
+import { useAuth } from "@/providers/UnifiedAuthProvider";
 
 export default function KanbanBoardPage() {
   const { loading } = useAuth();

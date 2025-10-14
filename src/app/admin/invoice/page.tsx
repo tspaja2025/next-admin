@@ -2,12 +2,11 @@
 
 import { FileTextIcon, PlusIcon } from "lucide-react";
 import { useState } from "react";
-import { DarkModeToggle } from "@/components/DarkModeToggle";
 import { InvoiceForm } from "@/components/invoice/InvoiceForm";
 import { InvoiceList } from "@/components/invoice/InvoiceList";
 import { InvoiceView } from "@/components/invoice/InvoiceView";
-import type { InvoiceWithItems, View } from "@/components/providers/types";
 import { Button } from "@/components/ui/button";
+import type { InvoiceWithItems, View } from "@/lib/types";
 
 export default function InvoicePage() {
   const [view, setView] = useState<View>("list");
@@ -62,7 +61,6 @@ export default function InvoicePage() {
                   <PlusIcon />
                   New Invoice
                 </Button>
-                <DarkModeToggle />
               </div>
             )}
           </div>

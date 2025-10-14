@@ -3,7 +3,7 @@
 import { CalendarDayView } from "@/components/calendar/views/CalendarDayView";
 import { CalendarMonthView } from "@/components/calendar/views/CalendarMonthView";
 import { CalendarWeekView } from "@/components/calendar/views/CalendarWeekView";
-import { useCalendar } from "@/components/providers/Provider";
+import { useCalendar } from "@/providers/CalendarProvider";
 
 export function CalendarGrid() {
   const { view } = useCalendar();

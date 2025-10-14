@@ -7,7 +7,6 @@ import {
   MoreVerticalIcon,
   Trash2Icon,
 } from "lucide-react";
-import type { TaskCardProps } from "@/components/providers/types";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -25,6 +24,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { getPriorityColor, getPriorityTextColor } from "@/lib/kanban-utils";
+import type { TaskCardProps } from "@/lib/types";
 
 export default function TaskCard({
   task,

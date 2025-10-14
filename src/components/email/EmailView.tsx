@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 import React from "react";
 import { EmailAttachment } from "@/components/email/EmailAttachment";
-import type { EmailViewProps } from "@/components/providers/types";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -24,6 +23,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import type { EmailViewProps } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 export const EmailView = React.memo(function EmailView({

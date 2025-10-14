@@ -1,17 +1,23 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import { useTodos } from "@/components/providers/hooks";
-import { useAuth } from "@/components/providers/Provider";
-import type { FilterType } from "@/components/providers/types";
 import { TodoFilters } from "@/components/todo/TodoFilters";
 import { TodoInput } from "@/components/todo/TodoInput";
 import { TodoList } from "@/components/todo/TodoList";
 import { TodoStats } from "@/components/todo/TodoStats";
+import { useTodos } from "@/hooks/use-todos";
+import type { FilterType } from "@/lib/types";
+import { useAuth } from "@/providers/UnifiedAuthProvider";
 
 export default function TodoPage() {
-  const { todos, setTodos, addTodo, deleteTodo, toggleTodo, clearCompleted } =
-    useTodos();
+  const {
+    todos,
+    addTodo,
+    deleteTodo,
+    toggleTodo,
+    clearCompleted,
+    reorderTodos,
+  } = useTodos();
 
   const [inputValue, setInputValue] = useState("");
   const [filter, setFilter] = useState<FilterType>("all");
@@ -29,14 +35,9 @@ export default function TodoPage() {
       setEditingId(null);
       return;
     }
-    setTodos((prev) =>
-      prev.map((todo) =>
-        todo.id === editingId ? { ...todo, text: editValue.trim() } : todo,
-      ),
-    );
     setEditingId(null);
     setEditValue("");
-  }, [editValue, editingId, setTodos]);
+  }, [editValue, editingId]);
 
   const cancelEdit = useCallback(() => {
     setEditingId(null);
@@ -44,17 +45,12 @@ export default function TodoPage() {
   }, []);
 
   // Derived values
-  const { active, completed } = useMemo(
-    () =>
-      todos.reduce(
-        (acc, t) => {
-          t.completed ? acc.completed++ : acc.active++;
-          return acc;
-        },
-        { active: 0, completed: 0 },
-      ),
-    [todos],
-  );
+  const { active, completed } = useMemo(() => {
+    return {
+      active: todos.filter((t) => !t.completed).length,
+      completed: todos.filter((t) => t.completed).length,
+    };
+  }, [todos]);
 
   if (loading) {
     return (
@@ -107,7 +103,7 @@ export default function TodoPage() {
           onSaveEdit={saveEdit}
           onCancelEdit={cancelEdit}
           onEditChange={setEditValue}
-          setTodos={setTodos}
+          reorderTodos={reorderTodos}
         />
 
         {/* Footer */}

@@ -3,7 +3,6 @@
 import { format } from "date-fns";
 import { SaveIcon, Trash2Icon } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useCalendar } from "@/components/providers/Provider";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -23,6 +22,7 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { eventColors } from "@/lib/event-colors";
+import { useCalendar } from "@/providers/CalendarProvider";
 
 export function CalendarDialog() {
   const {

@@ -376,6 +376,16 @@ export interface TaskCardProps {
 /*
  * Email Types
  */
+export type EmailAction = "star" | "archive" | "delete" | "markUnread";
+export type EmailFolder =
+  | "inbox"
+  | "sent"
+  | "drafts"
+  | "spam"
+  | "trash"
+  | "starred";
+export type EmailFilter = "all" | "unread" | "starred";
+
 export interface Email {
   id: string;
   sender: string;
@@ -384,34 +394,51 @@ export interface Email {
   subject: string;
   content: string;
   timestamp: Date;
-  isRead: boolean | EmailAction;
-  isStarred: boolean | EmailAction;
-  folder: EmailFolder | EmailAction;
+  isRead: boolean;
+  isStarred: boolean;
+  folder: EmailFolder;
   attachments: Attachment[];
 }
+
+export interface EmailState {
+  emails: Email[];
+  selectedFolder: EmailFolder;
+  selectedEmail: Email | null;
+  isComposeOpen: boolean;
+  searchQuery: string;
+  filter: EmailFilter;
+}
+
+export type EmailReducerAction =
+  | { type: "setFolder"; folder: EmailFolder }
+  | { type: "setSelectedEmail"; email: Email | null }
+  | { type: "setSearchQuery"; query: string }
+  | { type: "setFilter"; filter: EmailFilter }
+  | { type: "setComposeOpen"; open: boolean }
+  | { type: "emailAction"; action: EmailAction; email: Email }
+  | { type: "add"; email: Email };
 
 export interface Attachment {
   id: string;
   name: string;
-  size: string; // e.g., "123 KB"
-  type: string; // MIME type like "application/pdf"
-  file?: File; // optional reference to uploaded file
+  size: string;
+  type: string;
+  file?: File;
 }
+
+export type EmailEvent =
+  | { type: "setFolder"; folder: EmailFolder }
+  | { type: "setSearch"; query: string }
+  | { type: "setFilter"; filter: EmailFilter }
+  | { type: "toggleStar"; id: string }
+  | { type: "markUnread"; id: string }
+  | { type: "moveTo"; id: string; folder: EmailFolder }
+  | { type: "add"; email: Email };
 
 export interface EmailAttachmentProps {
   attachment: Attachment;
   onDownload?: (attachment: Attachment) => void;
 }
-
-export type EmailFolder =
-  | "inbox"
-  | "sent"
-  | "drafts"
-  | "spam"
-  | "trash"
-  | "starred";
-
-export type EmailAction = "star" | "archive" | "delete" | "markUnread";
 
 export interface FolderInfo {
   id: EmailFolder;
@@ -435,7 +462,7 @@ export interface EmailSearchBarProps {
   onFilterClick?: () => void;
 }
 
-export type EmailFilter = "all" | "unread" | "starred";
+// export type EmailFilter = "all" | "unread" | "starred";
 
 export interface EmailSearchBarProps {
   searchQuery: string;
@@ -687,7 +714,7 @@ export interface TodoListProps {
   onSaveEdit: () => void;
   onCancelEdit: () => void;
   onEditChange: (val: string) => void;
-  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+  reorderTodos: (activeId: string, overId: string) => void;
 }
 
 export type FilterType = "all" | "active" | "completed";
@@ -709,4 +736,77 @@ export interface TodoFiltersProps {
   onChange: (f: FilterType) => void;
   onClearCompleted: () => void;
   completed: number;
+}
+
+// Context Types
+export interface UnifiedAuthContextType {
+  user: AuthUser;
+  loading: boolean;
+  error: string | null;
+  signInLocal: (username: string) => void;
+  signInSocial: (email: string, password: string) => Promise<void>;
+  signUpSocial: (
+    email: string,
+    password: string,
+    fullName: string,
+  ) => Promise<void>;
+  signOut: () => void;
+  clearError: () => void;
+}
+
+export interface CalendarContextType {
+  // Core state
+  currentDate: Date;
+  setCurrentDate: (date: Date) => void;
+  view: CalendarView;
+  setView: (view: CalendarView) => void;
+  events: CalendarEvent[];
+
+  // Filtering
+  hiddenColors: string[];
+  setHiddenColors: (colors: string[]) => void;
+  toggleColorVisibility: (color: string) => void;
+  visibleEvents: CalendarEvent[];
+
+  // Dialog state
+  selectedEvent: CalendarEvent | null;
+  selectedDate: Date | null;
+  isEventDialogOpen: boolean;
+  openEventDialog: (date: Date, event?: CalendarEvent) => void;
+  closeEventDialog: () => void;
+  setSelectedEvent: (event: CalendarEvent | null) => void;
+  setIsEventDialogOpen: (open: boolean) => void;
+  setSelectedDate: (date: Date | null) => void;
+
+  // CRUD
+  addEvent: (event: Omit<CalendarEvent, "id">) => void;
+  updateEvent: (event: CalendarEvent) => void;
+  deleteEvent: (id: string) => void;
+}
+
+export interface FileContextType {
+  files: FileItem[];
+  currentPath: string;
+  selectedFiles: string[];
+  viewMode: ViewMode;
+  searchQuery: string;
+  isInitialized: boolean;
+  isLoading: boolean;
+  uploadProgress: { [key: string]: number };
+  storageUsed: number;
+  storageLimit: number;
+
+  // Methods
+  createFolder: (name: string, parentId: string | null) => void;
+  deleteFiles: (fileIds: string[]) => void;
+  renameFile: (fileId: string, newName: string) => void;
+  uploadFiles: (files: File[], parentId: string | null) => void;
+  setCurrentPath: (path: string) => void;
+  setSelectedFiles: (files: string[]) => void;
+  setViewMode: (mode: ViewMode) => void;
+  setSearchQuery: (query: string) => void;
+  getCurrentFiles: () => FileItem[];
+  getFileById: (id: string) => FileItem | undefined;
+  getPathSegments: () => Array<{ name: string; path: string }>;
+  canUpload: (files: File[]) => boolean;
 }
