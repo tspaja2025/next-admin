@@ -28,52 +28,52 @@ const data = {
       items: [
         {
           title: "Calendar",
-          url: "/admin/calendar",
+          url: "/next-admin/admin/calendar",
           isActive: false,
         },
         {
           title: "Kanban Board",
-          url: "/admin/kanban-board",
+          url: "/next-admin/admin/kanban-board",
           isActive: false,
         },
         {
           title: "Notes",
-          url: "/admin/notes",
+          url: "/next-admin/admin/notes",
           isActive: false,
         },
         {
           title: "Chats",
-          url: "/admin/chats",
+          url: "/next-admin/admin/chats",
           isActive: false,
         },
         {
           title: "Social Media",
-          url: "/admin/social-media",
+          url: "/next-admin/admin/social-media",
           isActive: false,
         },
         {
           title: "Mail",
-          url: "/admin/mail",
+          url: "/next-admin/admin/mail",
           isActive: false,
         },
         {
           title: "To-Do",
-          url: "/admin/todo",
+          url: "/next-admin/admin/todo",
           isActive: false,
         },
         {
           title: "File Manager",
-          url: "/admin/file-manager",
+          url: "/next-admin/admin/file-manager",
           isActive: false,
         },
         {
           title: "Invoice",
-          url: "/admin/invoice",
+          url: "/next-admin/admin/invoice",
           isActive: false,
         },
         {
           title: "API Keys",
-          url: "/admin/api-keys",
+          url: "/next-admin/admin/api-keys",
           isActive: false,
         },
       ],
