@@ -22,7 +22,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { generateId } from "@/lib/kanban-utils";
 import type { AddTaskDialogProps, Task } from "@/lib/types";
 
-export default function KanbanAddTaskDialog({
+export function KanbanAddTaskDialog({
   isOpen,
   onClose,
   onSave,
@@ -43,7 +43,7 @@ export default function KanbanAddTaskDialog({
       setDescription("");
       setPriority("medium");
     }
-  }, [editingTask, isOpen]);
+  }, [editingTask]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,23 +60,19 @@ export default function KanbanAddTaskDialog({
     }
   };
 
-  const handleClose = () => {
-    setTitle("");
-    setDescription("");
-    setPriority("medium");
-    onClose();
-  };
-
   return (
-    <Dialog open={isOpen} onOpenChange={handleClose}>
+    <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>
-            {editingTask ? "Edit Task" : "Add New Task"}
+          <DialogTitle className="text-lg font-semibold">
+            {editingTask ? "Edit Task" : "Add Task"}
           </DialogTitle>
+          <p className="text-sm text-muted-foreground">
+            {editingTask ? "Update task details" : "Create a new task"}
+          </p>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4 pt-2">
           <div className="space-y-2">
             <Label htmlFor="title">Title</Label>
             <Input
@@ -106,33 +102,18 @@ export default function KanbanAddTaskDialog({
               onValueChange={(value: Task["priority"]) => setPriority(value)}
             >
               <SelectTrigger>
-                <SelectValue />
+                <SelectValue placeholder="Select priority" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="low">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-green-500" />
-                    Low
-                  </div>
-                </SelectItem>
-                <SelectItem value="medium">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-amber-500" />
-                    Medium
-                  </div>
-                </SelectItem>
-                <SelectItem value="high">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-red-500" />
-                    High
-                  </div>
-                </SelectItem>
+                <SelectItem value="low">Low</SelectItem>
+                <SelectItem value="medium">Medium</SelectItem>
+                <SelectItem value="high">High</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           <DialogFooter>
-            <Button type="button" variant="outline" onClick={handleClose}>
+            <Button type="button" variant="outline" onClick={onClose}>
               Cancel
             </Button>
             <Button type="submit">

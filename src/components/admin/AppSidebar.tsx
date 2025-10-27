@@ -1,9 +1,7 @@
 import { GalleryVerticalEnd } from "lucide-react";
-import { NavUser } from "@/components/admin/NavUser";
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarGroup,
   SidebarHeader,
   SidebarMenu,
@@ -27,53 +25,53 @@ const data = {
       url: "",
       items: [
         {
+          title: "API Keys",
+          url: "/api-keys",
+          isActive: false,
+        },
+        {
           title: "Calendar",
-          url: "/next-admin/admin/calendar",
-          isActive: false,
-        },
-        {
-          title: "Kanban Board",
-          url: "/next-admin/admin/kanban-board",
-          isActive: false,
-        },
-        {
-          title: "Notes",
-          url: "/next-admin/admin/notes",
+          url: "/calendar",
           isActive: false,
         },
         {
           title: "Chats",
-          url: "/next-admin/admin/chats",
-          isActive: false,
-        },
-        {
-          title: "Social Media",
-          url: "/next-admin/admin/social-media",
-          isActive: false,
-        },
-        {
-          title: "Mail",
-          url: "/next-admin/admin/mail",
-          isActive: false,
-        },
-        {
-          title: "To-Do",
-          url: "/next-admin/admin/todo",
+          url: "/chats",
           isActive: false,
         },
         {
           title: "File Manager",
-          url: "/next-admin/admin/file-manager",
+          url: "/file-manager",
           isActive: false,
         },
         {
           title: "Invoice",
-          url: "/next-admin/admin/invoice",
+          url: "/invoice",
           isActive: false,
         },
         {
-          title: "API Keys",
-          url: "/next-admin/admin/api-keys",
+          title: "Kanban Board",
+          url: "/kanban-board",
+          isActive: false,
+        },
+        {
+          title: "Mail",
+          url: "/mail",
+          isActive: false,
+        },
+        {
+          title: "Notes",
+          url: "/notes",
+          isActive: false,
+        },
+        {
+          title: "Social Media",
+          url: "/social-media",
+          isActive: false,
+        },
+        {
+          title: "To-Do",
+          url: "/todo",
           isActive: false,
         },
       ],
@@ -88,7 +86,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <a href="/admin">
+              <a href="/">
                 <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
                   <GalleryVerticalEnd className="size-4" />
                 </div>
@@ -127,9 +125,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter>
-        <NavUser user={data.user} />
-      </SidebarFooter>
       <SidebarRail />
     </Sidebar>
   );

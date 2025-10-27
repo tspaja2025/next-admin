@@ -1,97 +1,14 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { useCallback, useReducer, useState } from "react";
-import AddTaskDialog from "@/components/kanban/KanbanAddTaskDialog";
-import KanbanColumn from "@/components/kanban/KanbanColumn";
+import { KanbanAddTaskDialog } from "@/components/kanban/KanbanAddTaskDialog";
+import { KanbanColumn } from "@/components/kanban/KanbanColumn";
+import { kanbanReducer } from "@/lib/kanban-reducer";
 import { initialKanbanData } from "@/lib/kanban-utils";
-import type { KanbanData, Task } from "@/lib/types";
+import type { Task } from "@/lib/types";
 
-type KanbanAction =
-  | { type: "ADD_TASK"; columnId: string; task: Task }
-  | { type: "EDIT_TASK"; columnId: string; task: Task }
-  | { type: "DELETE_TASK"; taskId: string }
-  | { type: "MOVE_TASK"; taskId: string; targetColumnId: string }
-  | {
-      type: "REORDER_TASK";
-      columnId: string;
-      taskId: string;
-      targetIndex: number;
-    };
-
-function kanbanReducer(state: KanbanData, action: KanbanAction): KanbanData {
-  switch (action.type) {
-    case "ADD_TASK":
-      return {
-        columns: state.columns.map((col) =>
-          col.id === action.columnId
-            ? { ...col, tasks: [...col.tasks, action.task] }
-            : col,
-        ),
-      };
-
-    case "EDIT_TASK":
-      return {
-        columns: state.columns.map((col) => {
-          const filtered = col.tasks.filter((t) => t.id !== action.task.id);
-          return col.id === action.columnId
-            ? { ...col, tasks: [...filtered, action.task] }
-            : { ...col, tasks: filtered };
-        }),
-      };
-
-    case "DELETE_TASK":
-      return {
-        columns: state.columns.map((col) => ({
-          ...col,
-          tasks: col.tasks.filter((t) => t.id !== action.taskId),
-        })),
-      };
-
-    case "MOVE_TASK": {
-      let movedTask: Task | null = null;
-      const withoutTask = state.columns.map((col) => {
-        if (col.tasks.some((t) => t.id === action.taskId)) {
-          movedTask = col.tasks.find((t) => t.id === action.taskId)!;
-          return {
-            ...col,
-            tasks: col.tasks.filter((t) => t.id !== action.taskId),
-          };
-        }
-        return col;
-      });
-
-      return {
-        columns: withoutTask.map((col) =>
-          col.id === action.targetColumnId && movedTask
-            ? { ...col, tasks: [...col.tasks, movedTask] }
-            : col,
-        ),
-      };
-    }
-
-    case "REORDER_TASK": {
-      return {
-        columns: state.columns.map((col) => {
-          if (col.id !== action.columnId) return col;
-
-          const tasks = [...col.tasks];
-          const taskIndex = tasks.findIndex((t) => t.id === action.taskId);
-          if (taskIndex === -1) return col;
-
-          const [movedTask] = tasks.splice(taskIndex, 1);
-          tasks.splice(action.targetIndex, 0, movedTask);
-
-          return { ...col, tasks };
-        }),
-      };
-    }
-
-    default:
-      return state;
-  }
-}
-
-export default function KanbanBoard() {
+export function KanbanBoard() {
   const [kanbanData, dispatch] = useReducer(kanbanReducer, initialKanbanData);
   const [isAddTaskDialogOpen, setIsAddTaskDialogOpen] = useState(false);
   const [activeColumnId, setActiveColumnId] = useState<string>("");
@@ -107,7 +24,6 @@ export default function KanbanBoard() {
   const handleEditTask = useCallback(
     (task: Task) => {
       setEditingTask(task);
-      // Find which column contains this task
       const column = kanbanData.columns.find((col) =>
         col.tasks.some((t) => t.id === task.id),
       );
@@ -137,9 +53,7 @@ export default function KanbanBoard() {
   const handleTaskDrop = useCallback(
     (taskId: string, targetColumnId: string, targetIndex?: number) => {
       setDraggedTaskId(null);
-
       if (targetIndex !== undefined) {
-        // Reorder inside same column
         dispatch({
           type: "REORDER_TASK",
           columnId: targetColumnId,
@@ -147,7 +61,6 @@ export default function KanbanBoard() {
           targetIndex,
         });
       } else {
-        // Move across columns
         dispatch({ type: "MOVE_TASK", taskId, targetColumnId });
       }
     },
@@ -159,9 +72,12 @@ export default function KanbanBoard() {
   }, []);
 
   return (
-    <div className="flex-1 gap-4 flex flex-col">
-      {/* Kanban Board */}
-      <div className="grid grid-cols-4 gap-4">
+    <div className="flex flex-col gap-6">
+      <motion.div
+        layout
+        transition={{ type: "spring", stiffness: 150, damping: 20 }}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+      >
         {kanbanData.columns.map((column) => (
           <KanbanColumn
             key={column.id}
@@ -174,10 +90,9 @@ export default function KanbanBoard() {
             draggedTaskId={draggedTaskId}
           />
         ))}
-      </div>
+      </motion.div>
 
-      {/* Add/Edit Task Dialog */}
-      <AddTaskDialog
+      <KanbanAddTaskDialog
         isOpen={isAddTaskDialogOpen}
         onClose={() => setIsAddTaskDialogOpen(false)}
         onSave={handleSaveTask}

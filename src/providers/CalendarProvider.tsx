@@ -135,6 +135,7 @@ export function CalendarProvider({ children }: { children: React.ReactNode }) {
       isEventDialogOpen,
       selectedDate,
       hiddenColors,
+      setHiddenColors,
       visibleEvents,
       addEvent,
       updateEvent,

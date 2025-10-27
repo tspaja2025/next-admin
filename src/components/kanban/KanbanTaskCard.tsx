@@ -9,14 +9,7 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardFooter } from "@/components/ui/card";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,16 +17,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { getPriorityColor, getPriorityTextColor } from "@/lib/kanban-utils";
-import type { TaskCardProps } from "@/lib/types";
+import type { KanbanTaskCardProps } from "@/lib/types";
 
-export default function TaskCard({
+export function KanbanTaskCard({
   task,
   onEdit,
   onDelete,
   isDragging,
   onDragStart,
   onDragOver,
-}: TaskCardProps) {
+}: KanbanTaskCardProps) {
   const handleDragStart = (e: React.DragEvent) => {
     e.dataTransfer.setData("text/plain", task.id);
     e.dataTransfer.effectAllowed = "move";
@@ -41,62 +34,57 @@ export default function TaskCard({
   };
 
   return (
-    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+    <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.98 }}>
       <Card
         data-task-id={task.id}
-        role="listitem"
-        aria-grabbed={isDragging}
         draggable
         onDragStart={handleDragStart}
         onDragOver={onDragOver}
-        className={`gap-0 p-0 rounded-md shadow-none group hover:shadow-md transition-all duration-200 cursor-grab active:cursor-grabbing ${
-          isDragging ? "opacity-50 ring-2 ring-primary scale-105" : ""
+        className={`border border-border/40 bg-background/80 rounded-lg p-3 transition-all cursor-grab active:cursor-grabbing ${
+          isDragging ? "opacity-50 ring-2 ring-primary/50" : "hover:shadow-sm"
         }`}
       >
-        <CardHeader className="p-4 px-2">
-          <CardTitle className="truncate">{task.title}</CardTitle>
-          <CardAction>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <MoreVerticalIcon />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={() => onEdit(task)}>
-                  <Edit3Icon className="mr-2 h-4 w-4" />
-                  Edit
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => onDelete(task.id)}
-                  className="text-red-600"
-                >
-                  <Trash2Icon className="mr-2 h-4 w-4" />
-                  Delete
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </CardAction>
-        </CardHeader>
+        <div className="flex justify-between items-start">
+          <h4 className="font-medium text-sm">{task.title}</h4>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <MoreVerticalIcon className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem onClick={() => onEdit(task)}>
+                <Edit3Icon className="mr-2 h-4 w-4" /> Edit
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => onDelete(task.id)}
+                className="text-red-600"
+              >
+                <Trash2Icon className="mr-2 h-4 w-4" /> Delete
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
 
         {task.description && (
-          <CardContent className="px-2 text-gray-500 truncate">
+          <p className="text-xs text-muted-foreground mt-1 line-clamp-2">
             {task.description}
-          </CardContent>
+          </p>
         )}
 
-        <CardFooter className="flex items-center gap-2 p-2">
-          <div
-            className="flex items-center text-xs text-gray-400"
-            suppressHydrationWarning
-          >
-            <CalendarIcon className="h-3 w-3 mr-1" />
-            {task.createdAt.toLocaleDateString()}
+        <CardFooter className="flex justify-between items-center text-xs text-muted-foreground px-0 pt-2">
+          <div className="flex items-center gap-1">
+            <CalendarIcon className="h-3 w-3" />
+            {new Date(task.createdAt).toLocaleDateString("en-GB", {
+              year: "numeric",
+              month: "2-digit",
+              day: "2-digit",
+            })}
           </div>
           <Badge
-            className={`text-xs font-medium capitalize ${getPriorityTextColor(
+            className={`capitalize ${getPriorityColor(task.priority)} ${getPriorityTextColor(
               task.priority,
-            )} ${getPriorityColor(task.priority)}`}
+            )}`}
           >
             {task.priority}
           </Badge>

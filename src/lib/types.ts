@@ -364,7 +364,7 @@ export interface AddTaskDialogProps {
   editingTask?: Task | null;
 }
 
-export interface TaskCardProps {
+export interface KanbanTaskCardProps {
   task: Task;
   onEdit: (task: Task) => void;
   onDelete: (taskId: string) => void;
@@ -372,6 +372,18 @@ export interface TaskCardProps {
   onDragOver?: (e: React.DragEvent) => void;
   isDragging: boolean;
 }
+
+export type KanbanAction =
+  | { type: "ADD_TASK"; columnId: string; task: Task }
+  | { type: "EDIT_TASK"; columnId: string; task: Task }
+  | { type: "DELETE_TASK"; taskId: string }
+  | { type: "MOVE_TASK"; taskId: string; targetColumnId: string }
+  | {
+      type: "REORDER_TASK";
+      columnId: string;
+      taskId: string;
+      targetIndex: number;
+    };
 
 /*
  * Email Types
@@ -679,6 +691,12 @@ export type AnalyticsRecord = {
 export type DashboardSidebarProps = {
   activeView: string;
   onViewChange: (view: string) => void;
+};
+
+export type NavItem = {
+  label: string;
+  icon: React.ReactNode;
+  value: string;
 };
 
 /*
