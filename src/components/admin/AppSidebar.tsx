@@ -1,4 +1,5 @@
 import { GalleryVerticalEnd } from "lucide-react";
+import Link from "next/link";
 import {
   Sidebar,
   SidebarContent,
@@ -13,6 +14,8 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 
+const basePath = process.env.NODE_ENV === "production" ? "/next-admin" : "";
+
 const data = {
   user: {
     name: "example",
@@ -24,56 +27,16 @@ const data = {
       title: "Apps",
       url: "",
       items: [
-        {
-          title: "API Keys",
-          url: "next-admin/api-keys",
-          isActive: false,
-        },
-        {
-          title: "Calendar",
-          url: "next-admin/calendar",
-          isActive: false,
-        },
-        {
-          title: "Chats",
-          url: "next-admin/chats",
-          isActive: false,
-        },
-        {
-          title: "File Manager",
-          url: "next-admin/file-manager",
-          isActive: false,
-        },
-        {
-          title: "Invoice",
-          url: "next-admin/invoice",
-          isActive: false,
-        },
-        {
-          title: "Kanban Board",
-          url: "next-admin/kanban-board",
-          isActive: false,
-        },
-        {
-          title: "Mail",
-          url: "next-admin/mail",
-          isActive: false,
-        },
-        {
-          title: "Notes",
-          url: "next-admin/notes",
-          isActive: false,
-        },
-        {
-          title: "Social Media",
-          url: "next-admin/social-media",
-          isActive: false,
-        },
-        {
-          title: "To-Do",
-          url: "next-admin/todo",
-          isActive: false,
-        },
+        { title: "API Keys", url: "/api-keys", isActive: false },
+        { title: "Calendar", url: "/calendar", isActive: false },
+        { title: "Chats", url: "/chats", isActive: false },
+        { title: "File Manager", url: "/file-manager", isActive: false },
+        { title: "Invoice", url: "/invoice", isActive: false },
+        { title: "Kanban Board", url: "/kanban-board", isActive: false },
+        { title: "Mail", url: "/mail", isActive: false },
+        { title: "Notes", url: "/notes", isActive: false },
+        { title: "Social Media", url: "/social-media", isActive: false },
+        { title: "To-Do", url: "/todo", isActive: false },
       ],
     },
   ],
@@ -86,7 +49,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <a href="/">
+              <Link href={`${basePath}/`}>
                 <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
                   <GalleryVerticalEnd className="size-4" />
                 </div>
@@ -94,27 +57,34 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <span className="font-medium">Next Admin</span>
                   <span className="">v1.0.0</span>
                 </div>
-              </a>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
+
       <SidebarContent>
         <SidebarGroup>
           <SidebarMenu>
             {data.navMain.map((item) => (
               <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton asChild>
-                  <a href={item.url} className="font-bold">
+                  <Link href={`${basePath}${item.url}`} className="font-bold">
                     {item.title}
-                  </a>
+                  </Link>
                 </SidebarMenuButton>
+
                 {item.items?.length ? (
                   <SidebarMenuSub>
-                    {item.items.map((item) => (
-                      <SidebarMenuSubItem key={item.title}>
-                        <SidebarMenuSubButton asChild isActive={item.isActive}>
-                          <a href={item.url}>{item.title}</a>
+                    {item.items.map((subItem) => (
+                      <SidebarMenuSubItem key={subItem.title}>
+                        <SidebarMenuSubButton
+                          asChild
+                          isActive={subItem.isActive}
+                        >
+                          <Link href={`${basePath}${subItem.url}`}>
+                            {subItem.title}
+                          </Link>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
                     ))}
@@ -125,6 +95,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
+
       <SidebarRail />
     </Sidebar>
   );
