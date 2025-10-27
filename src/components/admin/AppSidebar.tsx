@@ -69,7 +69,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             {data.navMain.map((item) => (
               <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton asChild>
-                  <Link href={`${basePath}${item.url}`} className="font-bold">
+                  <Link href={item.url} className="font-bold">
                     {item.title}
                   </Link>
                 </SidebarMenuButton>
@@ -82,9 +82,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                           asChild
                           isActive={subItem.isActive}
                         >
-                          <Link href={`${basePath}${subItem.url}`}>
-                            {subItem.title}
-                          </Link>
+                          <Link href={subItem.url}>{subItem.title}</Link>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
                     ))}
