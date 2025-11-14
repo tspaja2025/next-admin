@@ -593,7 +593,7 @@ function CalendarWeekView() {
           All Day
         </div>
         {weekDays.map((_, i) => (
-          <div key={i} className="p-1 border-r min-h-[40px]">
+          <div key={i} className="p-1 border-r min-h-10">
             {allDayEvents[i].map((event) => (
               <div
                 key={event.id}

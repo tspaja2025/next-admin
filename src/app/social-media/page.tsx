@@ -350,7 +350,7 @@ function SocialAccounts() {
               <CardHeader>
                 <div className="flex items-start justify-between">
                   <div className="flex items-center space-x-3">
-                    <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-white">
+                    <div className="h-10 w-10 rounded-lg bg-linear-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-white">
                       {platformIcons[account.platform] || (
                         <TwitterIcon className="h-5 w-5" />
                       )}
@@ -1093,7 +1093,7 @@ function SocialCreatePost() {
               <div className="space-y-4">
                 <div className="border rounded-lg p-4 bg-white">
                   <div className="flex items-center space-x-3 mb-3">
-                    <div className="h-10 w-10 rounded-full bg-gradient-to-br from-blue-600 to-cyan-500" />
+                    <div className="h-10 w-10 rounded-full bg-linear-to-br from-blue-600 to-cyan-500" />
                     <div>
                       <p className="font-medium text-sm">
                         {accounts.find((a) => a.id === selectedAccount)
