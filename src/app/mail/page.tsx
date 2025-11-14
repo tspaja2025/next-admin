@@ -23,7 +23,7 @@ export default function MailPage() {
   } = useEmails();
 
   return (
-    <div className="flex h-screen bg-muted/20 text-foreground">
+    <div className="flex bg-muted/20 text-foreground">
       <EmailSidebar
         selectedFolder={selectedFolder}
         onFolderSelect={setSelectedFolder}

@@ -52,6 +52,7 @@ import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
   Card,
+  CardAction,
   CardContent,
   CardDescription,
   CardHeader,
@@ -252,12 +253,12 @@ function SocialAccounts() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       <div className="flex items-center justify-between">
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <Button>
-              <PlusIcon className="mr-2 h-4 w-4" />
+              <PlusIcon />
               Add Account
             </Button>
           </DialogTrigger>
@@ -1188,58 +1189,66 @@ function SocialDashboardOverview() {
   return (
     <div className="space-y-6">
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">
+          <CardHeader>
+            <CardTitle className="text-sm">
               Connected Accounts
             </CardTitle>
-            <UsersIcon className="h-4 w-4" />
+            <CardAction>
+              <UsersIcon className="h-4 w-4" />
+            </CardAction>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold">{accounts.length}</div>
-            <p className="text-xs text-gray-500 mt-1">Active social accounts</p>
+            <p className="text-xs text-muted-foreground mt-1">Active social accounts</p>
           </CardContent>
         </Card>
 
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">
+          <CardHeader>
+            <CardTitle className="text-sm">
               Scheduled Posts
             </CardTitle>
-            <CalendarIcon className="h-4 w-4" />
+            <CardAction>
+              <CalendarIcon className="h-4 w-4" />
+            </CardAction>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold">{scheduledCount}</div>
-            <p className="text-xs text-gray-500 mt-1">Ready to publish</p>
+            <p className="text-xs text-muted-foreground mt-1">Ready to publish</p>
           </CardContent>
         </Card>
 
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">
+          <CardHeader>
+            <CardTitle className="text-sm">
               Published Posts
             </CardTitle>
-            <FileTextIcon className="h-4 w-4" />
+            <CardAction>
+              <FileTextIcon className="h-4 w-4" />
+            </CardAction>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold">{publishedCount}</div>
-            <p className="text-xs text-gray-500 mt-1">Total published</p>
+            <p className="text-xs text-muted-foreground mt-1">Total published</p>
           </CardContent>
         </Card>
 
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">
+          <CardHeader>
+            <CardTitle className="text-sm">
               Total Engagement
             </CardTitle>
-            <TrendingUpIcon className="h-4 w-4" />
+            <CardAction>
+              <TrendingUpIcon className="h-4 w-4" />
+            </CardAction>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold">
               {totalEngagement.toLocaleString()}
             </div>
-            <p className="text-xs text-gray-500 mt-1">
+            <p className="text-xs text-muted-foreground mt-1">
               Likes, comments & shares
             </p>
           </CardContent>
@@ -1252,12 +1261,8 @@ function SocialDashboardOverview() {
           <CardTitle>Recent Posts</CardTitle>
         </CardHeader>
         <CardContent>
-          {loading ? (
-            <div className="text-center py-8 text-gray-500">
-              Loading posts...
-            </div>
-          ) : posts.length === 0 ? (
-            <div className="text-center py-8 text-gray-500">
+          {posts.length === 0 ? (
+            <div className="text-center py-4 text-muted-foreground">
               No posts yet. Create your first post to get started!
             </div>
           ) : (
@@ -1318,7 +1323,7 @@ function SocialDashboardSidebar({
   onViewChange,
 }: DashboardSidebarProps) {
   return (
-    <aside className="w-64 border-r  min-h-[calc(100vh-96px)]">
+    <aside className="w-64 border-r">
       <nav className="p-4 space-y-1">
         {navItems.map((item) => (
           <Button

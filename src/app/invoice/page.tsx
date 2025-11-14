@@ -80,6 +80,21 @@ const formatCurrency = (num: number) =>
     currency: "USD",
   }).format(num);
 
+const safeFormatDate = (dateString: string, formatString: string): string => {
+  try {
+    const date = new Date(dateString);
+    // Check if date is valid
+    if (isNaN(date.getTime())) {
+      console.warn('Invalid date:', dateString);
+      return 'Invalid Date';
+    }
+    return format(date, formatString);
+  } catch (error) {
+    console.error('Error formatting date:', error);
+    return 'Invalid Date';
+  }
+};
+
 export default function InvoicePage() {
   const [view, setView] = useState<View>("list");
   const [selectedInvoice, setSelectedInvoice] = useState<
@@ -202,13 +217,12 @@ function InvoiceForm({ invoice, onSave, onCancel }: InvoiceFormProps) {
       );
     } else {
       setInvoiceNumber(generateInvoiceNumber());
-      const today = format(new Date(), "yyyy-MM-dd");
-      const due = format(
-        new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
-        "yyyy-MM-dd",
-      );
-      setInvoiceDate(today);
-      setDueDate(due);
+      const today = new Date();
+      const due = new Date(today.getTime() + 30 * 24 * 60 * 60 * 1000);
+
+      // Format dates as YYYY-MM-DD for input[type="date"]
+      setInvoiceDate(today.toISOString().split('T')[0]);
+      setDueDate(due.toISOString().split('T')[0]);
     }
   }, [invoice]);
 
@@ -576,11 +590,11 @@ function InvoiceList({ onCreateNew, onEdit, onView }: InvoiceListProps) {
                   <div className="flex items-center gap-6 text-sm text-slate-600">
                     <div>
                       <span className="text-slate-500">Date: </span>
-                      {format(new Date(invoice.invoice_date), "MMM dd, yyyy")}
+                      {safeFormatDate(invoice.invoice_date, "MMM dd, yyyy")}
                     </div>
                     <div>
                       <span className="text-slate-500">Due: </span>
-                      {format(new Date(invoice.due_date), "MMM dd, yyyy")}
+                      {safeFormatDate(invoice.due_date, "MMM dd, yyyy")}
                     </div>
                     <div>
                       <span className="text-slate-500">Items: </span>
@@ -738,13 +752,13 @@ function InvoiceClientInfo({ invoice }: InvoiceClientInfoProps) {
         <div className="mb-4">
           <p className="text-sm text-slate-500 mb-1">Invoice Date</p>
           <p className="font-semibold">
-            {format(new Date(invoice_date), "MMMM dd, yyyy")}
+            {safeFormatDate(invoice_date, "MMMM dd, yyyy")}
           </p>
         </div>
         <div>
           <p className="text-sm text-slate-500 mb-1">Due Date</p>
           <p className="font-semibold">
-            {format(new Date(due_date), "MMMM dd, yyyy")}
+            {safeFormatDate(due_date, "MMMM dd, yyyy")}
           </p>
         </div>
       </div>
