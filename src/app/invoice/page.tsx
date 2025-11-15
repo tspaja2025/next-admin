@@ -80,18 +80,34 @@ const formatCurrency = (num: number) =>
     currency: "USD",
   }).format(num);
 
+const parseDateSafe = (dateString: string): Date => {
+  // Try multiple date parsing strategies
+  let date = new Date(dateString);
+
+  if (isNaN(date.getTime())) {
+    // If standard parsing fails, try parsing YYYY-MM-DD format
+    const parts = dateString.split('-');
+    if (parts.length === 3) {
+      date = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+    }
+  }
+
+  // If still invalid, return current date as fallback
+  if (isNaN(date.getTime())) {
+    console.warn('Invalid date, using current date as fallback:', dateString);
+    return new Date();
+  }
+
+  return date;
+};
+
 const safeFormatDate = (dateString: string, formatString: string): string => {
   try {
-    const date = new Date(dateString);
-    // Check if date is valid
-    if (isNaN(date.getTime())) {
-      console.warn("Invalid date:", dateString);
-      return "Invalid Date";
-    }
+    const date = parseDateSafe(dateString);
     return format(date, formatString);
   } catch (error) {
-    console.error("Error formatting date:", error);
-    return "Invalid Date";
+    console.error('Error formatting date:', error);
+    return 'Invalid Date';
   }
 };
 
