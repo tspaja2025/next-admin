@@ -30,7 +30,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: 'pnpm'
+          cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install --ignore-workspace
@@ -45,6 +45,10 @@ jobs:
 
       - name: Build with Next.js
         run: pnpm run build
+        env:
+          NODE_ENV: production
+          PAGES_BASE_PATH: ${{ steps.setup_pages.outputs.base_path }}
+          ASSET_PREFIX: ""
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

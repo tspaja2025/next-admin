@@ -1,5 +1,8 @@
 import type { NextConfig } from "next";
 
+const isGithubPages = process.env.NODE_ENV === 'production';
+const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1] || 'next-admin';
+
 const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
@@ -8,8 +11,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: process.env.PAGES_BASE_PATH,
-  assetPrefix: process.env.ASSET_PREFIX,
+  basePath: isGithubPages ? `/${repoName}` : '',
+  assetPrefix: isGithubPages ? `/${repoName}` : '',
 };
 
 export default nextConfig;
