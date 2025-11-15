@@ -1192,54 +1192,52 @@ function SocialDashboardOverview() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <Card>
           <CardHeader>
-            <CardTitle className="text-sm">
-              Connected Accounts
-            </CardTitle>
+            <CardTitle className="text-sm">Connected Accounts</CardTitle>
             <CardAction>
               <UsersIcon className="h-4 w-4" />
             </CardAction>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold">{accounts.length}</div>
-            <p className="text-xs text-muted-foreground mt-1">Active social accounts</p>
+            <p className="text-xs text-muted-foreground mt-1">
+              Active social accounts
+            </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-sm">
-              Scheduled Posts
-            </CardTitle>
+            <CardTitle className="text-sm">Scheduled Posts</CardTitle>
             <CardAction>
               <CalendarIcon className="h-4 w-4" />
             </CardAction>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold">{scheduledCount}</div>
-            <p className="text-xs text-muted-foreground mt-1">Ready to publish</p>
+            <p className="text-xs text-muted-foreground mt-1">
+              Ready to publish
+            </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-sm">
-              Published Posts
-            </CardTitle>
+            <CardTitle className="text-sm">Published Posts</CardTitle>
             <CardAction>
               <FileTextIcon className="h-4 w-4" />
             </CardAction>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold">{publishedCount}</div>
-            <p className="text-xs text-muted-foreground mt-1">Total published</p>
+            <p className="text-xs text-muted-foreground mt-1">
+              Total published
+            </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-sm">
-              Total Engagement
-            </CardTitle>
+            <CardTitle className="text-sm">Total Engagement</CardTitle>
             <CardAction>
               <TrendingUpIcon className="h-4 w-4" />
             </CardAction>

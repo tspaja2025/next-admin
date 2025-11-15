@@ -85,13 +85,13 @@ const safeFormatDate = (dateString: string, formatString: string): string => {
     const date = new Date(dateString);
     // Check if date is valid
     if (isNaN(date.getTime())) {
-      console.warn('Invalid date:', dateString);
-      return 'Invalid Date';
+      console.warn("Invalid date:", dateString);
+      return "Invalid Date";
     }
     return format(date, formatString);
   } catch (error) {
-    console.error('Error formatting date:', error);
-    return 'Invalid Date';
+    console.error("Error formatting date:", error);
+    return "Invalid Date";
   }
 };
 
@@ -221,8 +221,8 @@ function InvoiceForm({ invoice, onSave, onCancel }: InvoiceFormProps) {
       const due = new Date(today.getTime() + 30 * 24 * 60 * 60 * 1000);
 
       // Format dates as YYYY-MM-DD for input[type="date"]
-      setInvoiceDate(today.toISOString().split('T')[0]);
-      setDueDate(due.toISOString().split('T')[0]);
+      setInvoiceDate(today.toISOString().split("T")[0]);
+      setDueDate(due.toISOString().split("T")[0]);
     }
   }, [invoice]);
 
@@ -533,6 +533,10 @@ function InvoiceList({ onCreateNew, onEdit, onView }: InvoiceListProps) {
     try {
       setLoading(true);
       const data = await getInvoices();
+      const safeData = data.map((invoice) => ({
+        ...invoice,
+        invoice_items: invoice.invoice_items || [],
+      }));
       setInvoices(data);
     } catch (error) {
       console.error("Error loading invoices:", error);
@@ -598,7 +602,7 @@ function InvoiceList({ onCreateNew, onEdit, onView }: InvoiceListProps) {
                     </div>
                     <div>
                       <span className="text-slate-500">Items: </span>
-                      {invoice.invoice_items.length}
+                      {(invoice.invoice_items || []).length}
                     </div>
                   </div>
                 </div>
