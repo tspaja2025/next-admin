@@ -537,7 +537,7 @@ function InvoiceList({ onCreateNew, onEdit, onView }: InvoiceListProps) {
         ...invoice,
         invoice_items: invoice.invoice_items || [],
       }));
-      setInvoices(data);
+      setInvoices(safeData);
     } catch (error) {
       console.error("Error loading invoices:", error);
     } finally {
