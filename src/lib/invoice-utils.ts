@@ -124,6 +124,7 @@
 //   };
 // }
 import type { Invoice, InvoiceItem, InvoiceWithItems } from "@/lib/types";
+import { format } from "date-fns";
 
 const STORAGE_KEY = "invoices";
 
@@ -258,6 +259,28 @@ export function generateInvoiceNumber(): string {
 
   return `INV-${year}${month}-${random}`;
 }
+
+export const formatCurrency = (num: number) =>
+  new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(num);
+
+export const safeFormatDate = (dateString: string, formatString: string): string => {
+  try {
+    const date = new Date(dateString);
+
+    if (isNaN(date.getTime()) || dateString === null || dateString === undefined) {
+      console.warn("Invalid date:", dateString);
+      return "Date not available";
+    }
+
+    return format(date, formatString);
+  } catch (error) {
+    console.error("Error formatting date:", error, "Date string:", dateString);
+    return "Date not available";
+  }
+};
 
 // ----------------------------------------------------------
 // Totals Calculator
