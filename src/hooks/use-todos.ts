@@ -5,10 +5,19 @@ import { useResource } from "@/hooks/use-resource";
 import type { Todo } from "@/lib/types";
 
 export function useTodos() {
-  const { data: todos, update: setTodos } = useResource<Todo[]>({
+  const { data: rawTodos, update: setTodos } = useResource<Todo[]>({
     storageKey: "todos",
     initialValue: [],
   });
+
+  const todos = useMemo(() => {
+    return rawTodos.map((t) => ({
+      ...t,
+      createdAt: typeof t.createdAt === "string"
+        ? new Date(t.createdAt)
+        : t.createdAt,
+    }));
+  }, [rawTodos]);
 
   const addTodo = useCallback(
     (text: string) => {

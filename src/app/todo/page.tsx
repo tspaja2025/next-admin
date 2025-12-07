@@ -352,10 +352,12 @@ function TodoItem({
                   {todo.text}
                 </span>
               )}
-              <div className="text-xs text-gray-400 mt-1">
-                Created {todo.createdAt.toLocaleDateString()} at{" "}
-                {todo.createdAt.toLocaleTimeString()}
-              </div>
+              {typeof window !== "undefined" && (
+                <div className="text-xs text-gray-400 mt-1">
+                  Created {todo.createdAt.toLocaleDateString()} at{" "}
+                  {todo.createdAt.toLocaleTimeString()}
+                </div>
+              )}
             </div>
 
             <div className="flex gap-1">
